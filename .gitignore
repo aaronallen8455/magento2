@@ -9,6 +9,7 @@ atlassian*
 /sitemap
 /.idea
 /.gitattributes
+/.composer
 
 /bin
 /dev

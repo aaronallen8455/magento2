@@ -14,8 +14,8 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder "scripts", "/scripts"
 
   # Auth.json + composer cache, don't sync changes back to avoid collisions.
-  config.vm.synced_folder ENV['HOME'] + '/.composer/',
-    '/home/vagrant/.composer/',
+  config.vm.synced_folder '.composer',
+    '/home/vagrant/.composer',
     type: 'rsync',
     rsync__auto: false
 
@@ -33,6 +33,8 @@ Vagrant.configure(2) do |config|
       'vendor/',         # Compose download area
       '.idea/',          # PHP Storm project files
       'app/etc/env.php', # Don't want to overwrite DB settings
+      'app/etc/config.php',
+      'pub/',
       '.magento'         # Used by Magento Cloud
     ],
     rsync__auto: true

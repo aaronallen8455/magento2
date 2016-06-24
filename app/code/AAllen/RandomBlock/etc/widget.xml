@@ -1,0 +1,23 @@
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="aallen_randomblock" class="AAllen\RandomBlock\Block\Widget\RandomBlock"
+            placeholder_image="Magento_Cms::images/widget_block.png">
+        <label translate="true">Random Block</label>
+        <description translate="true">Randomly display blocks from a pool of ID values.</description>
+        <parameters>
+            <parameter name="ids" xsi:type="text" required="true" visible="true">
+                <label translate="true">List of IDs</label>
+                <description translate="true">Ex: 1,3,4,8</description>
+                <value>1,2,3,4,5</value>
+            </parameter>
+            <parameter name="numBlocks" xsi:type="text" required="true" visible="true">
+                <label translate="true">Number Of Blocks to Display</label>
+                <description translate="true">Designate the number of blocks you want to display in the widget.</description>
+                <value>2</value>
+            </parameter>
+            <parameter name="template" xsi:type="text" required="true" visible="false">
+                <value>AAllen_RandomBlock::random.phtml</value>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
