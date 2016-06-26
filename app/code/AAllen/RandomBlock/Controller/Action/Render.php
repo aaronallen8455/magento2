@@ -38,7 +38,7 @@ class Render extends Action
     }
 
     /**
-     * Execute
+     * Build html response string
      *
      * @return null
      */
@@ -62,10 +62,11 @@ class Render extends Action
         shuffle($blocks);
         
         //build the html response
-        for ($i = 0; $i < $numBlocks; $i++) {
+        foreach ($blocks as $id) {
+            if ($numBlocks-- === 0) break;
             $html .= $this->_layout
                 ->createBlock('Magento\Cms\Block\Block')
-                ->setBlockId($blocks[$i])
+                ->setBlockId($id)
                 ->toHtml();
         }
         
