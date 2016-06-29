@@ -350,7 +350,20 @@ define([
                             }else{
                                 var ele = $(ulElement[0]),
                                     CssMinWidth = ele.css('minWidth');
-                                ele.css({whiteSpace:'nowrap', minWidth:0, width:0}).animate({minWidth:CssMinWidth, width:'100%'});
+                                ele.css(
+                                    {
+                                        whiteSpace:'nowrap',
+                                        minWidth:0,
+                                        width:0,
+                                        top: event.currentTarget.offsetTop
+                                    }
+                                ).animate(
+                                    {
+                                        minWidth:CssMinWidth,
+                                        width:'100%',
+                                        top: event.currentTarget.offsetTop // hold correct vertical position
+                                    }
+                                );
                             }
                         }
 
