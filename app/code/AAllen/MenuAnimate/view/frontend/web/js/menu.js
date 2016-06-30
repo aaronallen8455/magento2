@@ -444,7 +444,7 @@ define([
 
                 },
                 "mouseleave .ui-menu": "collapseAll",
-                "mouseleave .ui-menu-item": function () {
+                "mouseleave .ui-menu-item.level0": function () {
                     //cancel all timeOuts to prevent animation on inactive elements
                     for (var i=0; i<timeOuts.length; i++) {
                         window.clearTimeout(timeOuts[i]);
