@@ -18,7 +18,8 @@ define([
         options: {
             responsive: false,
             expanded: false,
-            delay: 0
+            delay: 300,
+            speed: 225
         },
         _create: function () {
             var self = this;
@@ -297,7 +298,11 @@ define([
         },
 
         _toggleDesktopMode: function () {
+            //holds all timeOut objects for animations
+            var timeOuts = [];
+
             this._on({
+
                 // Prevent focus from sticking to links inside menu after clicking
                 // them (focus should always stay on UL during navigation).
                 "mousedown .ui-menu-item > a": function (event) {
@@ -343,27 +348,77 @@ define([
                     if (target.has('ul')) {
                         ulElement = target.find('ul');
 
-                        if (rightBound >= 768) {
+                        // don't animate mobile version or elements that are already displaying.
+                        if (this.options.toggle && rightBound >= 768 && ulElement[0] && ulElement[0].style.display === 'none') {
+
+                            var delay = this.options.delay,
+                                ele = $(ulElement[0]),
+                                speed = this.options.speed;
+
                             // drop down or slide right animation
-                            if (ulElement[0] && ulElement[0].classList.contains('level0')) {
-                                $(ulElement[0]).slideDown().children('li').css({marginBottom:0, height:0}).animate({marginBottom:'1rem', height:35});
-                            }else{
-                                var ele = $(ulElement[0]),
-                                    CssMinWidth = ele.css('minWidth');
-                                ele.css(
-                                    {
-                                        whiteSpace:'nowrap',
-                                        minWidth:0,
-                                        width:0,
-                                        top: event.currentTarget.offsetTop
-                                    }
-                                ).animate(
-                                    {
-                                        minWidth:CssMinWidth,
-                                        width:'100%',
-                                        top: event.currentTarget.offsetTop // hold correct vertical position
-                                    }
+                            if (ulElement[0].classList.contains('level0')) {
+
+                                timeOuts.push(window.setTimeout(
+                                    function () {
+                                        ele.slideDown(speed);
+
+                                        // animate each li based on its offset height
+                                        ele.children('li').each(function () {
+                                            var cssHeight = this.offsetHeight;
+                                            $(this).css(
+                                                {
+                                                    marginBottom:0,
+                                                    height:0
+                                                }
+                                            ).animate(
+                                                {
+                                                    marginBottom:'1rem',
+                                                    height:cssHeight
+                                                }, speed
+                                            )
+                                        });
+                                    }, delay)
                                 );
+                            }else{
+                                var cssMinWidth = ele.css('minWidth'),
+                                    cssTop = event.currentTarget.offsetTop + 6;
+                                // store the width on the element
+                                if (!ele.data('real-width')) {
+                                    var clone = ele.clone().css({width: 'auto', minWidth: 0}).appendTo('body');
+                                    ele.data('real-width', parseInt(clone.css('width').slice(0,-2)) + 45 + 'px');
+                                    clone.remove();
+                                }
+
+                                timeOuts.push(window.setTimeout(
+                                    function () {
+                                        ele.css(
+                                            {
+                                                whiteSpace:'nowrap',
+                                                minWidth:0,
+                                                width:0,
+                                                top: cssTop
+                                            }
+                                        ).animate(
+                                            {
+                                                minWidth:cssMinWidth,
+                                                width: ele.data('real-width'),
+                                                top: cssTop // hold correct vertical position
+                                            }, speed
+                                        );
+                                        ele.children('li').css(
+                                            {
+                                                marginBottom: 0,
+                                                height: 0
+                                            }
+                                        ).animate(
+                                            {
+                                                marginBottom: '1rem',
+                                                height: 35
+                                            }, speed
+                                        );
+                                    }, delay)
+                                );
+
                             }
                         }
 
@@ -386,8 +441,16 @@ define([
                 },
                 "mouseleave": function (event) {
                     this.collapseAll(event, true);
+
                 },
-                "mouseleave .ui-menu": "collapseAll"
+                "mouseleave .ui-menu": "collapseAll",
+                "mouseleave .ui-menu-item": function () {
+                    //cancel all timeOuts to prevent animation on inactive elements
+                    for (var i=0; i<timeOuts.length; i++) {
+                        window.clearTimeout(timeOuts[i]);
+                    }
+                    timeOuts = [];
+                }
             });
 
             var categoryParent = this.element.find('.all-category'),

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <design>
+            <menu_animation>
+                <toggle>1</toggle>
+                <speed>225</speed>
+                <delay>300</delay>
+            </menu_animation>
+        </design>
+    </default>
+</config>

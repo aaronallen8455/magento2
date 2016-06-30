@@ -46,18 +46,7 @@
                 <item name="template" xsi:type="string">ui/grid/toolbar</item>
             </item>
         </argument>
-        <bookmark name="bookmarks">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="component" xsi:type="string">dataGridActions</item>
-                    <item name="storageConfig" xsi:type="array">
-                        <item name="saveUrl" xsi:type="url" path="mui/bookmark/save"/>
-                        <item name="deleteUrl" xsi:type="url" path="mui/bookmark/delete"/>
-                        <item name="namespace" xsi:type="string">menu_block_listing</item>
-                    </item>
-                </item>
-            </argument>
-        </bookmark>
+        <bookmark name="bookmarks"/>
         <component name="columns_controls">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
