@@ -79,7 +79,7 @@ class Edit extends Action
         if ($id) {
             $model->load($id);
             if (!$model->getId()) {
-                $this->messageManager->addError(__('This block no longer exists.'));
+                $this->messageManager->addErrorMessage(__('This block no longer exists.'));
                 /** @var Redirect $resultRedirect */
                 $resultRedirect = $this->resultRedirectFactory->create();
 
