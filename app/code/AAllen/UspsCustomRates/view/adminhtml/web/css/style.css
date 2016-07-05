@@ -1,0 +1,24 @@
+#custom_rates {
+    border: solid 1px black;
+    padding: 5px;
+    background-color: darkgrey;
+    margin-top: 5px;
+}
+
+#custom_rates div {
+    background-color: white;
+    margin-bottom: 5px;
+}
+
+#custom_rates div:last-child {
+    margin-bottom: 0px;
+}
+
+#custom_rates > div > * {
+    margin: 5px;
+    max-width: 335px;
+}
+
+#custom_rates > div > input {
+    max-width: 50%;
+}

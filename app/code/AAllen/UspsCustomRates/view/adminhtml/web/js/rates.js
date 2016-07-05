@@ -7,23 +7,24 @@ define([
 ], function ($) {
     "use strict";
 
-    var methodSelectors = [];
-    var priceInputs = [];
+    var methodSelectors = [],
+        priceInputs = [];
 
     return function (config, element) {
         // get the methods
-        var methods = JSON.parse(decodeURIComponent(config.methods));
+        var methods = JSON.parse(decodeURIComponent(config.methods)),
+            valueElement = $(config.value);
 
         // parse method names
         methods.each(function (x) {
             x.label = x.label.replace(/\+/g, ' ');
         });
 
-        buildExistingRules(config.rules, element, methods, $(config.value));
+        buildExistingRules(config.rules, element, methods, valueElement);
 
         // new rule button
         $(config.button).click(function () {
-            $(element).append(createNewRule(null, null, methods, $(config.value)));
+            $(element).append(createNewRule(null, null, methods, valueElement));
         })
     };
 
@@ -67,7 +68,15 @@ define([
             selector.val(method);
         }
         methodSelectors.push(selector);
-        var priceInput = $('<input type="text">').appendTo(wrapper).change(updateValueString.bind(null, valueElement));
+        var priceInput = $('<input type="text">').appendTo(wrapper).change(
+            function () {
+                // validate price
+                if (this.value.match(/^\d*\.?\d{1,2}$|^\d+\.?\d{0,2}$/) === null) {
+                    this.value = '';
+                }
+                updateValueString(valueElement);
+            }
+        ).attr('placeholder', 'Price (ex. 5.00)');
         if (price) {
             priceInput.val(price);
         }
