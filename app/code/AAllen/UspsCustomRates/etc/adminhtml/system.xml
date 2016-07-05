@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="carriers">
+            <group id="usps" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="custom_rates" translate="label" type="AAllen\UspsCustomRates\Helper\Data\Form\Element\CustomRates" sortOrder="131" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Custom Rates</label>
+                    <source_model>Magento\Usps\Model\Source\Method</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
