@@ -1,0 +1,14 @@
+<ul class="header links">
+    <li>
+        <a href="<?php echo $block->getLoginHref() ?>">
+            <?php echo __($block->getLoginText()) ?>
+        </a>
+    </li>
+    <?php if (!$block->isLoggedIn()): ?>
+    <li>
+        <a href="<?php echo $block->getRegisterHref() ?>">
+            <?php echo __('Create a New Account') ?>
+        </a>
+    </li>
+    <?php endif; ?>
+</ul>

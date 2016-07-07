@@ -15,7 +15,7 @@ define([
         var methods = JSON.parse(decodeURIComponent(config.methods)),
             valueElement = $(config.value);
 
-        // parse method names
+        // parse method names 
         methods.each(function (x) {
             x.label = x.label.replace(/\+/g, ' ');
         });
