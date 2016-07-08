@@ -9,15 +9,20 @@
 namespace AAllen\Sandbox\Block;
 
 
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
+use Magento\Store\Model\StoreManagerInterface;
 
 class Block extends Template
 {
     protected $_passedData;
     protected $_productCollectionFactory;
 
-    public function __construct(Context $context, \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory, array $data)
+    public function __construct(
+        Context $context,
+        \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
+        array $data)
     {
         $this->_productCollectionFactory = $productCollectionFactory;
         $this->_passedData = $data;
@@ -33,5 +38,16 @@ class Block extends Template
     {
         $collection = $this->_productCollectionFactory->create();
         return $collection->testMethod();
+    }
+
+    public function checkData()
+    {
+        $data = $this->_scopeConfig->getValue(
+            'carriers/usps/custom_rates_array',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $this->_storeManager->getStore()->getCode()
+        );
+        $data = unserialize($data);
+        return print_r($data, true);
     }
 }

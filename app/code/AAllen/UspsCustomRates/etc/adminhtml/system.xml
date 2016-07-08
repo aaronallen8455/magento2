@@ -9,10 +9,18 @@
     <system>
         <section id="carriers">
             <group id="usps" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                <!-- my custom field
                 <field id="custom_rates" translate="label" type="AAllen\UspsCustomRates\Helper\Data\Form\Element\CustomRates" sortOrder="131" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Custom Rates</label>
                     <source_model>Magento\Usps\Model\Source\Method</source_model>
                     <can_be_empty>1</can_be_empty>
+                </field> -->
+                <!-- magento field array -->
+                <field id="custom_rates" translate="label" sortOrder="135" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Rates</label>
+                    <frontend_model>AAllen\UspsCustomRates\Block\Adminhtml\Form\Field\CustomRates</frontend_model>
+                    <backend_model>AAllen\UspsCustomRates\Model\Adminhtml\System\Config\CustomRates</backend_model>
+                    <config_path>carriers/usps/custom_rates</config_path>
                 </field>
             </group>
         </section>

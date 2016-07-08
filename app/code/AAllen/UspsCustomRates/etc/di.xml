@@ -2,7 +2,6 @@
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <!--<preference for="Magento\Usps\Model\Carrier" type="AAllen\UspsCustomRates\Model\Carrier" />-->
     <type name="Magento\Quote\Model\Quote\Address\RateResult\Method">
         <plugin name="aallen_priceplugin" type="AAllen\UspsCustomRates\Plugin\Price" disabled="false" sortOrder="100"/>
     </type>

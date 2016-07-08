@@ -50,6 +50,16 @@ class Links extends Template
     }
 
     /**
+     * Get account URL
+     *
+     * @return string
+     */
+    public function getAccountUrl()
+    {
+        return $this->_customerUrl->getAccountUrl();
+    }
+
+    /**
      * Get login link href
      * 
      * @return string
