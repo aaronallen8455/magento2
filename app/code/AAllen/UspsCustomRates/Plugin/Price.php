@@ -91,7 +91,7 @@ class Price
                 $this->_scopeConfig->getValue(
                     'carriers/usps/custom_rates',
                     \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
-                    $this->_storeManager->getStore()->getCode()
+                    $this->_storeManager->getStore()->getId()
                 )
             );
         }

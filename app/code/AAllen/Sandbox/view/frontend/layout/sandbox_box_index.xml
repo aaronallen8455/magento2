@@ -5,6 +5,7 @@
     </head>
     <body>
         <referenceContainer name="content">
+            <block name="form" class="Magento\Framework\View\Element\Template" template="Your_Module::form.phtml"/>
         </referenceContainer>
     </body>
 </page>

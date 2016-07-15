@@ -2,21 +2,22 @@
 
 namespace AAllen\QuickMenu\Plugin;
 
+use Magento\Catalog\Model\Category;
+
 class CatUrl
 {
     public function aroundGetUrl(
-        $subject,
+        Category $subject,
         \Closure $proceed
     )
     {
+        /** @var \Magento\Catalog\Model\ResourceModel\Product\Collection $products */
         $products = $subject->getProductCollection();
         if ($subject->getProductCount() === 1) {
-            $url = null;
-            foreach ($products as $product) {
-                $url = $product->getProductUrl();
-            }
-            if (!is_null($url))
+            $url = $products->getFirstItem()->getProductUrl();
+            if (!empty($url)) {
                 return $url;
+            }
         }
         $result = $proceed();
         return $result;

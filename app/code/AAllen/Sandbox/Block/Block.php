@@ -50,4 +50,34 @@ class Block extends Template
         $data = unserialize($data);
         return print_r($data, true);
     }
+
+    public function checkData2()
+    {
+        $data = $this->_scopeConfig->getValue(
+            'carriers/usps/custom_rates_array',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $this->_storeManager->getStore()->getId()
+        );
+        $data = unserialize($data);
+        return print_r($data, true);
+    }
+    
+    public function getSalesEmail()
+    {
+        return $this->_scopeConfig->getValue(
+            'trans_email/ident_sales/email',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $this->_storeManager->getStore()->getId()
+        );
+    }
+    
+    public function getSalesName()
+    {
+        return $this->_scopeConfig->getValue(
+            'trans_email/ident_sales/name',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $this->_storeManager->getStore()->getId()
+        );
+    }
+    
 }

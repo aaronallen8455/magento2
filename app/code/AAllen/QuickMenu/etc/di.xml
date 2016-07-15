@@ -5,5 +5,4 @@
     <type name="Magento\Catalog\Model\Category">
         <plugin name="CatUrlPlug" type="AAllen\QuickMenu\Plugin\CatUrl" disabled="false" sortOrder="100" />
     </type>
-    <preference for="Magento\Theme\Block\Html\Topmenu" type="AAllen\QuickMenu\Block\Html\Topmenu" />
 </config>
