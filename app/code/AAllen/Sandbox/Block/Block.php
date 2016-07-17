@@ -79,5 +79,34 @@ class Block extends Template
             $this->_storeManager->getStore()->getId()
         );
     }
-    
+
+    public function getModuleName()
+    {
+        return 'Magento_Catalog';
+    }
+
+    public function getRead()
+    {
+        $array = $this->_viewConfig->getViewConfig()->read();
+
+        function walk($array) {
+            $html = '<ul>';
+            foreach ($array as $key => $value) {
+                $html .= '<li>';
+                $html .= "<span>$key</span>";
+                if (is_array($value)) {
+                    $html .= walk($value);
+                }else{
+                    $html .= "<span> -> $value</span>";
+                }
+
+                $html .= '</li>';
+            }
+            $html .= '</ul>';
+
+            return $html;
+        }
+
+        return walk($array);
+    }
 }

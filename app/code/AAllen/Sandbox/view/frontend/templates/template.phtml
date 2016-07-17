@@ -8,12 +8,7 @@
 <p>
     <?php echo $block->checkData2() ?>
 </p>
-<p>
-    <?php echo $block->getSalesEmail() ?>
-</p>
-<p>
-    <?php echo $block->getSalesName() ?>
-</p>
+
 
 <form class="form" action="result" method="post">
 
@@ -47,7 +42,16 @@
     {
         "*": {
             "AAllen_Sandbox/js/sand": {
-                "var1" : "hello"
+                "var1" : "<?php echo 'Hello from template' ?>"
+            }
+        }
+    }
+</script>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "AAllen_Sandbox/js/galleri": {
             }
         }
     }

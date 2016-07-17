@@ -6,7 +6,7 @@
 var config = {
     map: {
         "*": {
-            "mymenu": "js/menu"
+            "mage/gallery/gallery": "js/gallery/gallery"
         }
     }
 };
