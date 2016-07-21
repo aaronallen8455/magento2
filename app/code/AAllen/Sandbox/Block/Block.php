@@ -18,15 +18,32 @@ class Block extends Template
 {
     protected $_passedData;
     protected $_productCollectionFactory;
+    protected $_menuBlockCollection;
 
     public function __construct(
         Context $context,
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
+        \AAllen\MenuBlock\Model\ResourceModel\Block\CollectionFactory $menuBlockCollectionFactory,
         array $data)
     {
+        $this->_menuBlockCollection = $menuBlockCollectionFactory->create();
         $this->_productCollectionFactory = $productCollectionFactory;
         $this->_passedData = $data;
         parent::__construct($context, $data);
+    }
+
+    public function testDataObject() {
+        $obj = new \Magento\Framework\DataObject(
+            [
+                'code' => 'grand_total',
+                'field' => 'grand_total',
+                'strong' => true,
+                'value' => 20,
+                'label' => __('Grand Total'),
+            ]
+        );
+
+        return $obj->getCode();
     }
 
     public function printData()
@@ -108,5 +125,19 @@ class Block extends Template
         }
 
         return walk($array);
+    }
+
+    public function menuBlockData()
+    {
+        foreach ($this->_menuBlockCollection as $block) {
+            \Zend_Debug::dump($block->getId());
+        }
+
+        \Zend_Debug::dump(get_class($this->_menuBlockCollection));
+
+        $items = $this->_menuBlockCollection->getItems();
+        foreach ($items as $block) {
+            return print_r($block->getData(), true);
+        }
     }
 }

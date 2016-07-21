@@ -1,13 +1,14 @@
-<?php echo $block->printData() ?>
-<p>The SandBox</p>
-<?php echo get_class($this) ?>
-<?php echo $block->testProductMethod() ?>
-<p>
-    <?php echo $block->checkData() ?>
-</p>
-<p>
-    <?php echo $block->checkData2() ?>
-</p>
+<div data-mage-init='
+{
+    "AAllen_Sandbox/js/child": {
+        "test": "hello"
+    }
+}
+'></div>
+
+<div>
+    <?php echo $block->testDataObject() ?>
+</div>
 
 
 <form class="form" action="result" method="post">

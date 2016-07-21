@@ -34,6 +34,7 @@ class Target implements OptionSourceInterface
      */
     public function toOptionArray()
     {
+        $options = [];
         $options[] = ['label' => '', 'value' => '']; //the blank topmost option
         $availableOptions = $this->block->getAvailableTargets();
         foreach ($availableOptions as $key => $value) {

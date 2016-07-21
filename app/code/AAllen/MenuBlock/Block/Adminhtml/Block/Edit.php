@@ -6,6 +6,9 @@
  * Time: 12:32 AM
  */
 
+/*
+ * This is the old way of creating a form. The better way is with ui_component.
+ */
 namespace AAllen\MenuBlock\Block\Adminhtml\Block;
 
 

@@ -6,7 +6,7 @@
 var config = {
     map: {
         "*": {
-            menu: "AAllen_MenuAnimate/js/menu"
+            menu: "AAllen_MenuAnimate/js/menuextend"
         }
     }
 };

@@ -6,7 +6,8 @@
 var config = {
     map: {
         "*": {
-            alib: "AAllen_Sandbox/js/lib"
+            alib: "AAllen_Sandbox/js/lib",
+            "parent": "AAllen_Sandbox/js/parent"
         }
     }
 };

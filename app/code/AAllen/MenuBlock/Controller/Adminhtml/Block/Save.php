@@ -9,7 +9,9 @@
 namespace AAllen\MenuBlock\Controller\Adminhtml\Block;
 
 
+use AAllen\MenuBlock\Api\BlockRepositoryInterface;
 use AAllen\MenuBlock\Model\Block;
+use AAllen\MenuBlock\Model\BlockFactory;
 use Magento\Backend\App\Action;
 use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Framework\Controller\ResultInterface;
@@ -17,11 +19,19 @@ use Magento\Framework\Exception\LocalizedException;
 
 class Save extends Action
 {
+    /** @var BlockFactory $_blockFactory */
+    protected $_blockFactory;
+
+    /** @var  BlockRepositoryInterface $_blockRepository */
+    protected $_blockRepository;
+
     /**
      * @param Action\Context $context
      */
-    public function __construct(Action\Context $context)
+    public function __construct(Action\Context $context, BlockFactory $blockFactory, BlockRepositoryInterface $blockRepository)
     {
+        $this->_blockFactory = $blockFactory;
+        $this->_blockRepository = $blockRepository;
         parent::__construct($context);
     }
 
@@ -45,11 +55,13 @@ class Save extends Action
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($data) {
             /** @var Block $model */
-            $model = $this->_objectManager->create('AAllen\MenuBlock\Model\Block');
+            $model = $this->_blockFactory->create();
 
             $id = $this->getRequest()->getParam('block_id');
             if ($id) {
-                $model->load($id);
+                $model = $this->_blockRepository->getById($id);
+            }else{
+                unset($data['block_id']);
             }
 
             //check for empty child block id
@@ -65,7 +77,8 @@ class Save extends Action
             );
 
             try {
-                $model->save();
+                $this->_blockRepository->save($model);
+                //$model->save();
                 $this->messageManager->addSuccess(__('You saved this Block.'));
                 $this->_objectManager->get('Magento\Backend\Model\Session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
@@ -77,7 +90,7 @@ class Save extends Action
             } catch (\RuntimeException $e) {
                 $this->messageManager->addError($e->getMessage());
             } catch (\Exception $e) {
-                $this->messageManager->addException($e, __('Something went wrong while saving the block.'));
+                $this->messageManager->addException($e, $e->getMessage());
             }
 
             $this->_getSession()->setFormData($data);

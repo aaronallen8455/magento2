@@ -4,7 +4,8 @@
     <update handle="editor"/>
     <body>
         <referenceContainer name="content">
-            <block class="AAllen\MenuBlock\Block\Adminhtml\Block\Edit" name="menublock_block_edit"/>
+            <!--<block class="AAllen\MenuBlock\Block\Adminhtml\Block\Edit" name="menublock_block_edit"/>-->
+            <uiComponent name="menu_block_form"/>
         </referenceContainer>
     </body>
 </page>
