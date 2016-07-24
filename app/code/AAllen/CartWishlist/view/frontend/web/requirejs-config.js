@@ -6,6 +6,7 @@
 var config = {
     map: {
         "*": {
+            addToWishlist: "AAllen_CartWishlist/js/add-to-wishlist"
         }
     }
 };

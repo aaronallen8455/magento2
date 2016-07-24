@@ -158,6 +158,11 @@ define([
                 "mouseleave .ui-menu-item.level0": function () {
                     //cancel timeOut to prevent animation on inactive elements
                     window.clearTimeout(timeOut);
+                },
+                "mouseup .ui-menu-item": function (event) {
+                    var target = $(event.currentTarget);
+                    target.find('ul')[0].style.visibility = 'hidden';
+                    event.cancelBubble();
                 }
             });
 
