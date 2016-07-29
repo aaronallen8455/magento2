@@ -45,6 +45,20 @@ class Index extends Action
             'test_block'
         );
 
+        $block = $resultPage->getLayout()->createBlock(
+            'AAllen\CatMenu\Block\CatMenu',
+            'catmenu',
+            ['data' => ['test' => '1', 'ok' => 'Bitch']]
+        )->setTemplate(
+            'AAllen_CatMenu::catmenu.phtml'
+        );
+
+        $resultPage->getLayout()->setChild(
+            'content',
+            $block->getNameInLayout(),
+            'cat_menu'
+        );
+
         return $resultPage;
     }
 }

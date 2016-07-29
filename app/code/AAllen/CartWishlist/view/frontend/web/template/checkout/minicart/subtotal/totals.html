@@ -25,10 +25,10 @@
                   data-bind="attr: { 'data-label': $t('Excl. Tax') }, html: cart().subtotal_excl_tax">
             </span>
         <!-- /ko -->
-        <!-- ko if: cart().subtotal_excl_tax.match(/\d*\.\d{2}/)[0] > 50 -->
+        <!-- ko if: cart().subtotal_excl_tax.match(/\d*\.\d{2}/)[0] >= 50 -->
         <div>Free Shipping is available on orders $50 or larger!</div>
         <!-- /ko -->
-        <!-- ko ifnot: cart().subtotal_excl_tax.match(/\d*\.\d{2}/)[0] > 50 -->
+        <!-- ko ifnot: cart().subtotal_excl_tax.match(/\d*\.\d{2}/)[0] >= 50 -->
         <div data-bind="html: 'You have $' + (50 - cart().subtotal_excl_tax.match(/\d*\.\d{2}/)[0]).toFixed(2) + ' left until free shipping!'"></div>
         <!-- /ko -->
     <!-- /ko -->

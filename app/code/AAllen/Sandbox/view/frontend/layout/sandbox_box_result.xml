@@ -3,4 +3,8 @@
     <head>
         <title>Result</title>
     </head>
+    <body>
+        <referenceContainer name="content">
+        </referenceContainer>
+    </body>
 </page>

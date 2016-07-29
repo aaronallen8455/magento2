@@ -1,0 +1,18 @@
+<?php
+/** @var \AAllen\CatMenu\Block\CatMenu $block */
+$block
+?>
+
+<div>
+    <?php $categories = $block->getCategories() ?>
+    <?php foreach ($categories as $category): ?>
+    <div>
+        <?php echo $category->getName() ?>
+    </div>
+    <?php endforeach; ?>
+    CAT MENU TEST
+</div>
+
+<div>
+    <?php echo $block->getWidgetHtml() ?>
+</div>

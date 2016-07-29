@@ -19,16 +19,19 @@ class Block extends Template
     protected $_passedData;
     protected $_productCollectionFactory;
     protected $_menuBlockCollection;
+    protected $_themeProvider;
 
     public function __construct(
         Context $context,
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
         \AAllen\MenuBlock\Model\ResourceModel\Block\CollectionFactory $menuBlockCollectionFactory,
+        \Magento\Framework\View\Design\Theme\ThemeProviderInterface $themeProvider,
         array $data)
     {
         $this->_menuBlockCollection = $menuBlockCollectionFactory->create();
         $this->_productCollectionFactory = $productCollectionFactory;
         $this->_passedData = $data;
+        $this->_themeProvider = $themeProvider;
         parent::__construct($context, $data);
     }
 
@@ -66,6 +69,20 @@ class Block extends Template
         );
         $data = unserialize($data);
         return print_r($data, true);
+    }
+
+    public function getThemeData()
+    {
+        $themeId = $this->_scopeConfig->getValue(
+            \Magento\Framework\View\DesignInterface::XML_PATH_THEME_ID,
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $this->_storeManager->getStore()->getId()
+        );
+
+        /** @var $theme \Magento\Framework\View\Design\ThemeInterface */
+        $theme = $this->_themeProvider->getThemeById($themeId);
+
+        return print_r($theme->getData(), true);
     }
 
     public function checkData2()
