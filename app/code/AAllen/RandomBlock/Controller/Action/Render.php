@@ -14,11 +14,12 @@ use Magento\Cms\Model\BlockFactory;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\LayoutInterface;
+use Magento\Framework\View\Result\PageFactory;
 
 class Render extends Action
 {
-    /** @var LayoutInterface $_layout */
-    protected $_layout;
+
+    protected $_resultPageFactory;
 
     /** @var BlockFactory $_blockFactory */
     protected $_blockFactory;
@@ -26,14 +27,14 @@ class Render extends Action
     /**
      * Render constructor.
      * @param Context $context
-     * @param LayoutInterface $layoutInterface
+     * @param PageFactory $pageFactory
      * @param BlockFactory $blockFactory
      */
-    public function __construct(Context $context, LayoutInterface $layoutInterface, BlockFactory $blockFactory)
+    public function __construct(Context $context, PageFactory $pageFactory, BlockFactory $blockFactory)
     {
-        $this->_layout = $layoutInterface;
+        $this->_resultPageFactory = $pageFactory;
         $this->_blockFactory = $blockFactory;
-        
+
         parent::__construct($context);
     }
 
@@ -44,6 +45,8 @@ class Render extends Action
      */
     public function execute()
     {
+        $resultPage = $this->_resultPageFactory->create();
+
         $html = '';
         $ids = $this->getRequest()->getParam('ids');
         $numBlocks = (int)$this->getRequest()->getParam('num');
@@ -64,7 +67,8 @@ class Render extends Action
         //build the html response
         foreach ($blocks as $id) {
             if ($numBlocks-- === 0) break;
-            $html .= $this->_layout
+
+            $html .= $resultPage->getLayout()
                 ->createBlock('Magento\Cms\Block\Block')
                 ->setBlockId($id)
                 ->toHtml();

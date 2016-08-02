@@ -4,6 +4,7 @@
     <module name="AAllen_Sandbox" setup_version="1.0.0">
         <sequence>
             <module name="Magento_Cms"/>
+            <module name="Magento_Sales"/>
         </sequence>
     </module>
 </config>

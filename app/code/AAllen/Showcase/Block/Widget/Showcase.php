@@ -6,7 +6,7 @@
  * Time: 9:32 PM
  */
 
-namespace AAllen\CatMenu\Block;
+namespace AAllen\Showcase\Block\Widget;
 
 
 use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
@@ -14,36 +14,29 @@ use Magento\Catalog\Model\ResourceModel\Category\Collection;
 use Magento\CatalogWidget\Block\Product\ProductsList;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
-use Magento\Widget\Model\WidgetFactory;
+use Magento\Widget\Block\BlockInterface;
 
-class CatMenu extends Template
+class Showcase extends Template implements BlockInterface
 {
     /** @var  Collection */
     protected $_categoryCollectionFactory;
 
-    protected $_widgetFactory;
-
     public function __construct(
         Context $context,
         CollectionFactory $categoryCollection,
-        WidgetFactory $widgetFactory,
         array $data
     )
     {
         $this->_categoryCollectionFactory = $categoryCollection;
-        $this->_widgetFactory = $widgetFactory;
+        $this->_isScopePrivate = true;
+        $this->setTemplate('AAllen_Showcase::showcase.phtml');
 
         parent::__construct($context, $data);
     }
 
-    public function getCategories()
+    public function getTabs()
     {
-        /** @var Collection $categories */
-        $categories = $this->_categoryCollectionFactory->create();
-        $categories->addAttributeToSelect('name');
-        $categories->addFieldToFilter('level', 2);
 
-        return $categories;
     }
 
     public function getWidgetHtml()
@@ -73,7 +66,6 @@ class CatMenu extends Template
             ];
 
             $block->setData('conditions_encoded', serialize($conditions));
-            //$block->setData('conditions_encoded', 'a:2:{i:1;a:4:{s:4:"type";s:50:"Magento\CatalogWidget\Model\Rule\Condition\Combine";s:10:"aggregator";s:3:"all";s:5:"value";s:1:"1";s:9:"new_child";s:0:"";}s:4:"1--1";a:4:{s:4:"type";s:50:"Magento\CatalogWidget\Model\Rule\Condition\Product";s:9:"attribute";s:12:"category_ids";s:8:"operator";s:2:"==";s:5:"value";s:1:"7";}}');
 
             $block->setData('show_pager', true);
 

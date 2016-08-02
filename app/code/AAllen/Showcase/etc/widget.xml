@@ -1,0 +1,30 @@
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="aallen_showcase" class="AAllen\Showcase\Block\Widget\Test"
+            placeholder_image="Magento_Cms::images/widget_block.png">
+        <label translate="true">Product Showcase</label>
+        <description translate="true">Product Showcase</description>
+        <parameters>
+            <parameter name="tab1_show" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Tab 1</label>
+            </parameter>
+            <parameter name="tab1_name" xsi:type="text" required="true" visible="true">
+                <label translate="true">Tab 1 Title</label>
+                <value>Tab One</value>
+            </parameter>
+            <parameter name="tab1_conditions" xsi:type="conditions" visible="true" required="false"
+                       class="AAllen\Showcase\Block\Product\Widget\MultiConditions">
+                <label translate="true">Tab 1 Product Conditions</label>
+            </parameter>
+
+            <parameter name="tab2_conditions" xsi:type="conditions" visible="true" required="false"
+                       class="AAllen\Showcase\Block\Product\Widget\MultiConditions2">
+                <label translate="true">Tab 2 Product Conditions</label>
+            </parameter>
+
+
+
+        </parameters>
+    </widget>
+</widgets>
