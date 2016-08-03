@@ -9,8 +9,8 @@
     <body>
 
         <referenceContainer name="content">
-            <uiComponent name="sales_order_grida"/>
-            <referenceBlock name="sales_order_grid" remove="true"/>
+            <!--/**<uiComponent name="sales_order_grida"/>
+            <referenceBlock name="sales_order_grid" remove="true"/> */ -->
         </referenceContainer>
     </body>
 </page>
