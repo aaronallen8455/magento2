@@ -25,7 +25,7 @@ class MultiConditions2 extends Conditions implements RendererInterface
         Template\Context $context,
         \Magento\Framework\Data\Form\Element\Factory $elementFactory,
         \Magento\Rule\Block\Conditions $conditions,
-        \Magento\CatalogWidget\Model\Rule $rule,
+        \AAllen\Showcase\Model\Rule $rule,
         \Magento\Framework\Registry $registry,
         array $data = [])
     {

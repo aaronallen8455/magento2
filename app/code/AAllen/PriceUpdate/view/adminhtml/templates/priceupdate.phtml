@@ -1,0 +1,18 @@
+<span>Change all prices by </span>
+<input type="number" id="amount">
+<select id="is_constant">
+    <option value="1">Value</option>
+    <option value="0">Percent</option>
+</select>
+<button type="button" data-mage-init='
+{
+    "AAllen_PriceUpdate/js/price-update" : {
+        "numPages" : "<?php echo $block->getNumberOfPages() ?>",
+        "batchSize" : "<?php echo $block->getPageSize() ?>",
+        "amount" : "#amount",
+        "isConstant" : "#is_constant",
+        "progressBar" : "#progress"
+    }
+}
+'><span>Go</span></button>
+<span id="progress"></span>

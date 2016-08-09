@@ -7,6 +7,4 @@
         <plugin name="Form_PlugAA" type="AAllen\Showcase\Plugin\FormPlugin" disabled="false" sortOrder="20"/>
     </type>-->
 
-    <preference for="Magento\CatalogWidget\Model\Rule" type="AAllen\Showcase\Model\Rule" />
-
 </config>

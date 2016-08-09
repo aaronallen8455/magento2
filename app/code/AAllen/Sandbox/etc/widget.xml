@@ -1,0 +1,15 @@
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="config_value" class="AAllen\Sandbox\Block\Widget\ConfigValue"
+            placeholder_image="Magento_Cms::images/widget_block.png">
+        <label translate="true">Config Value</label>
+        <description translate="true">Product Showcase</description>
+        <parameters>
+
+            <parameter name="xml_path" xsi:type="text" required="true" visible="true">
+                <label translate="true">Path</label>
+            </parameter>
+
+        </parameters>
+    </widget>
+</widgets>

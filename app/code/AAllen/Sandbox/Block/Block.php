@@ -60,6 +60,22 @@ class Block extends Template
         return $collection->testMethod();
     }
 
+    public function getPrice()
+    {
+        $collection = $this->_productCollectionFactory->create();
+        $collection->addAttributeToSelect('price');
+        $collection->addFieldToFilter('entity_id', 51);
+        $price = 0;
+        foreach ($collection as $product) {
+            if ($product->getPrice()) {
+                $price = $product->getPrice() . ' ' . get_class($product);
+                if ($product->isSalable()) $price .= ' salabe';
+                break;
+            }
+        }
+        return $price;
+    }
+
     public function checkData()
     {
         $data = $this->_scopeConfig->getValue(

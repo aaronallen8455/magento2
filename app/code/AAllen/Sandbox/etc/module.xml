@@ -5,6 +5,7 @@
         <sequence>
             <module name="Magento_Cms"/>
             <module name="Magento_Sales"/>
+            <module name="Magento_Customer"/>
         </sequence>
     </module>
 </config>

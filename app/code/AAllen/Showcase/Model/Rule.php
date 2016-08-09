@@ -17,8 +17,8 @@ class Rule extends \Magento\CatalogWidget\Model\Rule
     public function loadPost(array $data)
     {
         $arr = $this->_convertFlatToRecursive($data);
-        if (isset($arr['conditions'])) {
-            $this->getConditions()->setConditions([])->loadArray($arr['conditions'][1]);
+        if (isset($arr['aaron'])) {
+            $this->getConditions()->setConditions([])->loadArray($arr['aaron'][1]);
         }
         if (isset($arr['actions'])) {
             $this->getActions()->setActions([])->loadArray($arr['actions'][1], 'actions');
