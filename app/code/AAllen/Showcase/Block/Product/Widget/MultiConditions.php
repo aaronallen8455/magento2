@@ -58,7 +58,7 @@ class MultiConditions extends Conditions implements RendererInterface
         $this->rule->getConditions()->setData('prefix', 'conditions');
         $widget = $this->registry->registry('current_widget_instance');
         if ($widget)
-            //\Zend_Debug::dump($widget->getWidgetParameters());
+            \Zend_Debug::dump($widget->getWidgetParameters());
         //$this->rule->getConditions()->setData('id', 3);
 
         $this->input = $this->elementFactory->create('text');
