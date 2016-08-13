@@ -26,7 +26,9 @@ $fieldAttributes = $fieldId . ' class="' . $fieldClass . '" ' . $block->getUiId(
     </div>
 </div>
 
-
+<div>
+    <?php echo $block->getHtmlId() ?>
+</div>
 <script>
     require([
         "Magento_Rule/rules",

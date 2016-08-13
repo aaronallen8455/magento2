@@ -1,24 +1,28 @@
 <?php
-/** @var \AAllen\Showcase\Block\Showcase $block */
+/** @var \AAllen\Showcase\Block\Widget\Showcase $block */
 $block
 ?>
 
 <div>
-    <?php $categories = $block->getCategories() ?>
-    <?php foreach ($categories as $category): ?>
+    <?php foreach ($block->getTabs() as $tab): ?>
         <button type="button" data-mage-init='
         {
-            "AAllen_CatMenu/js/cat-menu": {
-                "contentDiv": "#contentDiv",
-                "categoryId": "<?php echo $category->getId() ?>"
+            "AAllen_Showcase/js/showcase": {
+                "conditions": "<?php echo $tab['conditions'] ?>",
+                "tabIndex": "<?php echo $tab['tab_index'] ?>",
+                "contentDiv": "#showcase-content",
+                "defaultTab": {
+                    "id": "<?php echo $block->getDefaultTabId() ?>"
+                }
             }
         }
         '>
-            <span><?php echo __($category->getName()) ?></span>
+            <span><?php echo $tab['name'] ?></span>
         </button>
     <?php endforeach; ?>
+
+    <div id="showcase-content">
+        <?php echo $block->getDefaultHtml() ?>
+    </div>
 </div>
 
-<div id="contentDiv" data-role="loader">
-    <?php echo $block->getWidgetHtml() ?>
-</div>

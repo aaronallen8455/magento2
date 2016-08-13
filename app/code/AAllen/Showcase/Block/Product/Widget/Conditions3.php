@@ -16,7 +16,7 @@ use Magento\Framework\Data\Form\Element\Renderer\RendererInterface;
 /**
  * Class Conditions
  */
-class Conditions2 extends Template implements RendererInterface
+class Conditions3 extends Template implements RendererInterface
 {
     /**
      * @var \Magento\Rule\Block\Conditions
@@ -65,7 +65,7 @@ class Conditions2 extends Template implements RendererInterface
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Framework\Data\Form\Element\Factory $elementFactory,
         \Magento\Rule\Block\Conditions $conditions,
-        \AAllen\Showcase\Model\Rule2 $rule,
+        \AAllen\Showcase\Model\Rule3 $rule,
         \Magento\Framework\Registry $registry,
         array $data = []
     ) {
@@ -122,7 +122,7 @@ class Conditions2 extends Template implements RendererInterface
      */
     public function getHtmlId()
     {
-        return 'multiconditions2';
+        return 'multiconditions3';
         //return $this->getElement()->getContainer()->getHtmlId();
     }
 

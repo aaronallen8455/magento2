@@ -1,6 +1,6 @@
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
-    <widget id="aallen_showcase" class="AAllen\Showcase\Block\Widget\Test"
+    <widget id="aallen_showcase" class="AAllen\Showcase\Block\Widget\Showcase"
             placeholder_image="Magento_Cms::images/widget_block.png">
         <label translate="true">Product Showcase</label>
         <description translate="true">Product Showcase</description>
@@ -18,12 +18,70 @@
                 <label translate="true">Tab 1 Product Conditions</label>
             </parameter>
 
+            <parameter name="tab2_show" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Tab 2</label>
+            </parameter>
+            <parameter name="tab2_name" xsi:type="text" required="true" visible="true">
+                <label translate="true">Tab 2 Title</label>
+                <value>Tab Two</value>
+            </parameter>
             <parameter name="tab2_conditions" xsi:type="conditions" visible="true" required="false"
                        class="AAllen\Showcase\Block\Product\Widget\MultiConditions2">
                 <label translate="true">Tab 2 Product Conditions</label>
             </parameter>
 
+            <parameter name="tab3_show" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Tab 3</label>
+            </parameter>
+            <parameter name="tab3_name" xsi:type="text" required="true" visible="true">
+                <label translate="true">Tab 3 Title</label>
+                <value>Tab Three</value>
+            </parameter>
+            <parameter name="tab3_conditions" xsi:type="conditions" visible="true" required="false"
+                       class="AAllen\Showcase\Block\Product\Widget\MultiConditions3">
+                <label translate="true">Tab 3 Product Conditions</label>
+            </parameter>
 
+            <parameter name="tab4_show" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Tab 4</label>
+            </parameter>
+            <parameter name="tab4_name" xsi:type="text" required="true" visible="true">
+                <label translate="true">Tab 4 Title</label>
+                <value>Tab Four</value>
+            </parameter>
+            <parameter name="tab4_conditions" xsi:type="conditions" visible="true" required="false"
+                       class="AAllen\Showcase\Block\Product\Widget\MultiConditions4">
+                <label translate="true">Tab 4 Product Conditions</label>
+            </parameter>
+
+            <parameter name="tab5_show" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Tab 5</label>
+            </parameter>
+            <parameter name="tab5_name" xsi:type="text" required="true" visible="true">
+                <label translate="true">Tab 5 Title</label>
+                <value>Tab Five</value>
+            </parameter>
+            <parameter name="tab5_conditions" xsi:type="conditions" visible="true" required="false"
+                       class="AAllen\Showcase\Block\Product\Widget\MultiConditions5">
+                <label translate="true">Tab 5 Product Conditions</label>
+            </parameter>
+
+            <parameter name="tab6_show" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Tab 6</label>
+            </parameter>
+            <parameter name="tab6_name" xsi:type="text" required="true" visible="true">
+                <label translate="true">Tab 6 Title</label>
+                <value>Tab Six</value>
+            </parameter>
+            <parameter name="tab6_conditions" xsi:type="conditions" visible="true" required="false"
+                       class="AAllen\Showcase\Block\Product\Widget\MultiConditions6">
+                <label translate="true">Tab 6 Product Conditions</label>
+            </parameter>
 
         </parameters>
     </widget>

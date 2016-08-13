@@ -9,6 +9,7 @@
 namespace AAllen\Sandbox\Block;
 
 
+use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
@@ -52,6 +53,18 @@ class Block extends Template
     public function printData()
     {
         return print_r(current($this->_data), true);
+    }
+
+    public function getProductNames()
+    {
+        /** @var Collection $collection */
+        $collection = $this->_productCollectionFactory->create();
+        $collection->addAttributeToSelect('name');
+        foreach ($collection as $item){
+            var_dump($item->getData());
+            var_dump($item->getCategoryIds());
+            break;
+        }
     }
     
     public function testProductMethod()

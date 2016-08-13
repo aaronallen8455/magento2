@@ -12,14 +12,14 @@ use Magento\CatalogWidget\Model\Rule\Condition\ProductFactory;
 /**
  * Class MultiConditions
  */
-class MultiConditions2 extends \AAllen\Showcase\Block\Product\Widget\Conditions2 implements RendererInterface
+class MultiConditions3 extends \AAllen\Showcase\Block\Product\Widget\Conditions3 implements RendererInterface
 {
 
     public function __construct(
         Template\Context $context,
         \Magento\Framework\Data\Form\Element\Factory $elementFactory,
         \Magento\Rule\Block\Conditions $conditions, // *
-        \AAllen\Showcase\Model\Rule2 $rule,
+        \AAllen\Showcase\Model\Rule3 $rule,
         \Magento\Framework\Registry $registry,
         array $data = [])
     {
