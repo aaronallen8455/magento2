@@ -5,7 +5,7 @@
  */
 namespace AAllen\Showcase\Model\Rule\Condition\Combine;
 
-class Combine2 extends \AAllen\Showcase\Model\Rule\Condition\Combine2
+class Combine extends \AAllen\Showcase\Model\Rule\Condition\Combine
 {
     /**
      * @var \Magento\CatalogWidget\Model\Rule\Condition\ProductFactory
@@ -29,7 +29,7 @@ class Combine2 extends \AAllen\Showcase\Model\Rule\Condition\Combine2
     ) {
         $this->productFactory = $conditionFactory;
         parent::__construct($context, $data);
-        $this->setType('AAllen\Showcase\Model\Rule\Condition\Combine\Combine2');
+        $this->setType('AAllen\Showcase\Model\Rule\Condition\Combine\Combine');
     }
 
     /**
@@ -50,7 +50,7 @@ class Combine2 extends \AAllen\Showcase\Model\Rule\Condition\Combine2
             $conditions,
             [
                 [
-                    'value' => 'AAllen\Showcase\Model\Rule\Condition\Combine\Combine2',
+                    'value' => 'AAllen\Showcase\Model\Rule\Condition\Combine\Combine',
                     'label' => __('Conditions Combination'),
                 ],
                 ['label' => __('Product Attribute'), 'value' => $attributes]

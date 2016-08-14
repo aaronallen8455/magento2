@@ -1,8 +1,5 @@
 <?php
-/**
- * Copyright © 2016 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
+
 namespace AAllen\Showcase\Model\Rule\Condition;
 
 use Magento\Rule\Model\Condition\AbstractCondition;

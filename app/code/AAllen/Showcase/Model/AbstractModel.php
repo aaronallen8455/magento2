@@ -6,7 +6,7 @@ namespace AAllen\Showcase\Model;
  * Abstract Rule entity data model
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-abstract class AbstractModel2 extends \Magento\Framework\Model\AbstractExtensibleModel
+abstract class AbstractModel extends \Magento\Framework\Model\AbstractExtensibleModel
 {
     /**
      * Store rule combine conditions model
@@ -245,7 +245,7 @@ abstract class AbstractModel2 extends \Magento\Framework\Model\AbstractExtensibl
         if (null === $conditions) {
             $conditions = $this->getConditionsInstance();
         }
-        $conditions->setRule($this)->setId('2')->setPrefix('conditions');
+        $conditions->setRule($this)->setId('1')->setPrefix('conditions');
         $this->setConditions($conditions);
 
         return $this;
@@ -262,7 +262,7 @@ abstract class AbstractModel2 extends \Magento\Framework\Model\AbstractExtensibl
         if (null === $actions) {
             $actions = $this->getActionsInstance();
         }
-        $actions->setRule($this)->setId('2')->setPrefix('actions');
+        $actions->setRule($this)->setId('1')->setPrefix('actions');
         $this->setActions($actions);
 
         return $this;
@@ -291,10 +291,10 @@ abstract class AbstractModel2 extends \Magento\Framework\Model\AbstractExtensibl
     {
         $arr = $this->_convertFlatToRecursive($data);
         if (isset($arr['conditions'])) {
-            $this->getConditions()->setConditions([])->loadArray($arr['conditions'][2]);
+            $this->getConditions()->setConditions([])->loadArray($arr['conditions'][1]);
         }
         if (isset($arr['actions'])) {
-            $this->getActions()->setActions([])->loadArray($arr['actions'][2], 'actions');
+            $this->getActions()->setActions([])->loadArray($arr['actions'][1], 'actions');
         }
 
         return $this;

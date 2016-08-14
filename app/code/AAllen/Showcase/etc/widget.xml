@@ -5,6 +5,7 @@
         <label translate="true">Product Showcase</label>
         <description translate="true">Product Showcase</description>
         <parameters>
+
             <parameter name="tab1_show" xsi:type="select" visible="true"
                        source_model="Magento\Config\Model\Config\Source\Yesno">
                 <label translate="true">Display Tab 1</label>

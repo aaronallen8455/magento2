@@ -5,7 +5,7 @@ namespace AAllen\Showcase\Model\Rule\Condition;
 use Magento\Rule\Model\Condition\AbstractCondition;
 use Magento\Rule\Model\Condition\Context;
 
-class Combine5 extends AbstractCondition
+class Combine extends AbstractCondition
 {
     /**
      * @var \Magento\Rule\Model\ConditionFactory
@@ -28,7 +28,7 @@ class Combine5 extends AbstractCondition
 
         parent::__construct($context, $data);
         $this->setType(
-            'AAllen\Showcase\Model\Rule\Condition\Combine5'
+            'AAllen\Showcase\Model\Rule\Condition\Combine'
         )->setAggregator(
             'all'
         )->setValue(
@@ -252,7 +252,7 @@ class Combine5 extends AbstractCondition
             $this->getAggregatorElement()->getHtml(),
             $this->getValueElement()->getHtml()
         );
-        if ($this->getId() != '5') {
+        if ($this->getId() != '') {
             $html .= $this->getRemoveLinkHtml();
         }
         return $html;
