@@ -7,12 +7,13 @@
  */
 
 namespace AAllen\Showcase\Model;
+use Magento\Rule\Model\AbstractModel;
 
 
 /**
  * Class Rule
  */
-class Rule2 extends \AAllen\Showcase\Model\AbstractModel2
+class Rule2 extends AbstractModel
 {
     /**
      * @var Rule\Condition\CombineFactory
@@ -35,7 +36,7 @@ class Rule2 extends \AAllen\Showcase\Model\AbstractModel2
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Data\FormFactory $formFactory,
         \Magento\Framework\Stdlib\DateTime\TimezoneInterface $localeDate,
-        \AAllen\Showcase\Model\Rule\Condition\Combine\Combine2Factory $conditionsFactory,
+        \AAllen\Showcase\Model\Rule\Condition\Combine2Factory $conditionsFactory,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
         array $data = []
@@ -66,5 +67,58 @@ class Rule2 extends \AAllen\Showcase\Model\AbstractModel2
     public function getActionsInstance()
     {
         return null;
+    }
+
+    /**
+     * Reset rule combine conditions
+     *
+     * @param null|\Magento\Rule\Model\Condition\Combine $conditions
+     * @return $this
+     */
+    protected function _resetConditions($conditions = null)
+    {
+        if (null === $conditions) {
+            $conditions = $this->getConditionsInstance();
+        }
+        $conditions->setRule($this)->setId('2')->setPrefix('conditions');
+        $this->setConditions($conditions);
+
+        return $this;
+    }
+
+    /**
+     * Reset rule actions
+     *
+     * @param null|\Magento\Rule\Model\Action\Collection $actions
+     * @return $this
+     */
+    protected function _resetActions($actions = null)
+    {
+        if (null === $actions) {
+            $actions = $this->getActionsInstance();
+        }
+        $actions->setRule($this)->setId('2')->setPrefix('actions');
+        $this->setActions($actions);
+
+        return $this;
+    }
+
+    /**
+     * Initialize rule model data from array
+     *
+     * @param array $data
+     * @return $this
+     */
+    public function loadPost(array $data)
+    {
+        $arr = $this->_convertFlatToRecursive($data);
+        if (isset($arr['conditions'])) {
+            $this->getConditions()->setConditions([])->loadArray($arr['conditions'][2]);
+        }
+        if (isset($arr['actions'])) {
+            $this->getActions()->setActions([])->loadArray($arr['actions'][2], 'actions');
+        }
+
+        return $this;
     }
 }

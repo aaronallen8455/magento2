@@ -28,7 +28,7 @@
                 <value>Tab Two</value>
             </parameter>
             <parameter name="tab2_conditions" xsi:type="conditions" visible="true" required="false"
-                       class="AAllen\Showcase\Block\Product\Widget\MultiConditions2">
+                       class="AAllen\Showcase\Block\Product\Widget\Conditions2">
                 <label translate="true">Tab 2 Product Conditions</label>
             </parameter>
 
@@ -41,7 +41,7 @@
                 <value>Tab Three</value>
             </parameter>
             <parameter name="tab3_conditions" xsi:type="conditions" visible="true" required="false"
-                       class="AAllen\Showcase\Block\Product\Widget\MultiConditions3">
+                       class="AAllen\Showcase\Block\Product\Widget\Conditions3">
                 <label translate="true">Tab 3 Product Conditions</label>
             </parameter>
 
@@ -54,7 +54,7 @@
                 <value>Tab Four</value>
             </parameter>
             <parameter name="tab4_conditions" xsi:type="conditions" visible="true" required="false"
-                       class="AAllen\Showcase\Block\Product\Widget\MultiConditions4">
+                       class="AAllen\Showcase\Block\Product\Widget\Conditions4">
                 <label translate="true">Tab 4 Product Conditions</label>
             </parameter>
 
@@ -67,7 +67,7 @@
                 <value>Tab Five</value>
             </parameter>
             <parameter name="tab5_conditions" xsi:type="conditions" visible="true" required="false"
-                       class="AAllen\Showcase\Block\Product\Widget\MultiConditions5">
+                       class="AAllen\Showcase\Block\Product\Widget\Conditions5">
                 <label translate="true">Tab 5 Product Conditions</label>
             </parameter>
 
@@ -80,7 +80,7 @@
                 <value>Tab Six</value>
             </parameter>
             <parameter name="tab6_conditions" xsi:type="conditions" visible="true" required="false"
-                       class="AAllen\Showcase\Block\Product\Widget\MultiConditions6">
+                       class="AAllen\Showcase\Block\Product\Widget\Conditions6">
                 <label translate="true">Tab 6 Product Conditions</label>
             </parameter>
 
