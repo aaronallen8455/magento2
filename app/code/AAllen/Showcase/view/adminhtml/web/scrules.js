@@ -6,7 +6,7 @@ define([
     'prototype'
 ], function (Rules) {
     // extend the VarienRulesForm object to change the request url if its incorrect.
-    var SCRules = Class.create(Rules, {
+    return Class.create(Rules, {
         showChooserElement: function ($super, chooser) {
 
             // correct the url if necessary
@@ -22,6 +22,4 @@ define([
             $super(chooser);
         }
     });
-
-    return SCRules;
 });

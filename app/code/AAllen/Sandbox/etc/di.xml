@@ -10,4 +10,6 @@
         </arguments>
     </type>
 
+    <!--<preference for="Magento\Customer\Model\Account\Redirect" type="AAllen\Sandbox\Model\Account\Redirect" />-->
+
 </config>
