@@ -1,4 +1,4 @@
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <title>Sandbox</title>
@@ -6,6 +6,11 @@
     <body>
         <referenceContainer name="content">
             <block name="form" class="Magento\Framework\View\Element\Template" template="Your_Module::form.phtml"/>
+
+            <!--<block name="menu" class="Magento\Theme\Block\Html\Topmenu"/>-->
+        </referenceContainer>
+        <referenceContainer name="sidebar.main">
+            <block name="men" class="AAllen\SidebarMenu\Block\Menu"/>
         </referenceContainer>
     </body>
 </page>
