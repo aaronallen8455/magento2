@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="search_result_list">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">AAllen_AddButtonToProdList::product/list.phtml</argument>
+            </action>
+
+            <block name="buttons" class="Magento\Framework\View\Element\Text\ListText">
+                <block name="addButton" class="Magento\Framework\View\Element\Template">
+                    <action method="setTemplate">
+                        <argument name="name" xsi:type="string">AAllen_AddButtonToProdList::button.phtml</argument>
+                    </action>
+                </block>
+            </block>
+
+        </referenceBlock>
+    </body>
+</page>
