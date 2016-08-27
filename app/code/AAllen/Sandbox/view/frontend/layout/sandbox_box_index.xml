@@ -7,6 +7,7 @@
         <referenceContainer name="content">
             <block name="form" class="Magento\Framework\View\Element\Template" template="Your_Module::form.phtml"/>
 
+            <block name="cmsmenu" class="AAllen\CmsTopmenu\Block\Menu"/>
             <!--<block name="menu" class="Magento\Theme\Block\Html\Topmenu"/>-->
         </referenceContainer>
         <referenceContainer name="sidebar.main">

@@ -65,9 +65,9 @@ class Save extends Action
             }
 
             //check for empty child block id
-            if ($data['child_block_id'] == '') $data['child_block_id'] = null;
+            if (empty($data['child_block_id'])) $data['child_block_id'] = null;
             //nullify empty width
-            if ($data['width'] == '' || $data['width'] === '0') $data['width'] = null;
+            if (empty($data['width']) || $data['width'] === '0') $data['width'] = null;
 
             $model->setData($data);
 

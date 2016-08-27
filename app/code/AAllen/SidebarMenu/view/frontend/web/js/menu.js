@@ -1,6 +1,7 @@
 /**
  * Created by Aaron Allen on 8/20/2016.
  */
+
 define([
     'jquery',
     'uiClass'
@@ -26,7 +27,7 @@ define([
                     };
 
                     if (menu.name) {
-                        menu[key].name = menu.name + ' > ' + key;
+                        menu[key].name = key;
                     }else menu[key].name = 'Products'; // title for root category
 
                     this._initMenu(menu[key]);
@@ -38,15 +39,31 @@ define([
         draw : function (category, direction) {
             var self = this;
 
+            // animate the old category, if exists
             var prevDiv = null;
             if (prevDiv = this.element.children().first()) {
-                // slide left
+                // slide out of view
                 prevDiv.animate({left: prevDiv.width() * (direction === 'forward'?-1:1)}, this.duration, function () {this.remove();});
             }
 
-            var container = $('<div>'); // div that holds the menu elements
+            var container = $('<div>').addClass('side-menu'); // div that holds the menu elements
 
-            $('<h3>').html(category.name).appendTo(container); // title
+            // breadcrumbs
+            var parentCat = category,
+                breadCrumbs = $('<span>').addClass('breadcrumb').appendTo(container);
+            while (parentCat.parent && (parentCat = parentCat.parent()) && parentCat.name) {
+                // build the list of crumbs
+                if (breadCrumbs.children().length)
+                    breadCrumbs.prepend(document.createTextNode(' > '));
+
+                breadCrumbs.prepend(
+                    $('<a href="#">').click(
+                        bindToLink.bind(this, parentCat, 'back')
+                    ).text(parentCat.name)
+                );
+            }
+
+            $('<h3>').text(category.name).appendTo(container); // title
 
             // add back button if not top level
             if (category.parent().parent) {
@@ -86,16 +103,18 @@ define([
 
 
             this.element.append(container);
-            if (direction === 'none') {
+
+            // animate the new category
+            if (direction === 'none') { // no animation
                 container.css({position: 'absolute', width: this.element.width()});
             } else {
+                // slide into view
                 container.css({
                     position: 'absolute',
                     left: container.width() * (direction === 'forward'?1:-1),
                     width: this.element.width()
                 }).animate({left: 0}, this.duration);
             }
-
 
             this.element.css('height', container.height());
         },

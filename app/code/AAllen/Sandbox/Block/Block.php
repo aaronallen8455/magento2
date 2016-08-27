@@ -10,9 +10,13 @@ namespace AAllen\Sandbox\Block;
 
 
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
+use Magento\Cms\Api\PageRepositoryInterface;
+use Magento\Cms\Model\Page;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
+use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 
 class Block extends Template
@@ -21,14 +25,23 @@ class Block extends Template
     protected $_productCollectionFactory;
     protected $_menuBlockCollection;
     protected $_themeProvider;
+    protected $pageRepository;
+    protected $searchCriteriaBuilder;
+    protected $storeGroupResource;
 
     public function __construct(
         Context $context,
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
         \AAllen\MenuBlock\Model\ResourceModel\Block\CollectionFactory $menuBlockCollectionFactory,
         \Magento\Framework\View\Design\Theme\ThemeProviderInterface $themeProvider,
+        PageRepositoryInterface $pageRepository,
+        SearchCriteriaBuilder $searchCriteriaBuilder,
+        \Magento\Store\Model\ResourceModel\Group $group,
         array $data)
     {
+        $this->storeGroupResource = $group;
+        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
+        $this->pageRepository = $pageRepository;
         $this->_menuBlockCollection = $menuBlockCollectionFactory->create();
         $this->_productCollectionFactory = $productCollectionFactory;
         $this->_passedData = $data;
@@ -50,9 +63,30 @@ class Block extends Template
         return $obj->getCode();
     }
 
+    public function changeRootCat()
+    {
+        /** @var Store $store */
+        $store = $this->_storeManager->getStore();
+        $group = $store->getGroup();
+        $group->setRootCategoryId(2);
+        try {
+            //$group->save();
+            $this->storeGroupResource->save($group);
+        }catch (\Exception $e) {
+            \Zend_Debug::dump($e);
+        }
+    }
+
     public function printData()
     {
         return print_r(current($this->_data), true);
+    }
+
+    public function getPageAttribute($attributeName, $pageId)
+    {
+        $page = $this->pageRepository->getById($pageId);
+
+        return $page->getData($attributeName);
     }
 
     public function getProductNames()
