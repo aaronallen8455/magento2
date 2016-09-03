@@ -1,9 +1,4 @@
-<!--
-/**
- * Copyright © 2016 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
--->
+
 <li class="item product product-item" data-role="product-item">
     <div class="product">
         <!-- ko if: product_has_url -->
@@ -65,13 +60,12 @@
                 <!-- ko ifnot: canApplyMsrp -->
                 <!-- ko foreach: $parent.getRegion('priceSidebar') -->
                     <!-- ko template: {name: getTemplate(), data: item.product_price, as: 'price'} --><!-- /ko -->
-                    <!-- ko template: {name: getTemplate(), data: item.product_manufacturer, as: 'price'} --><!-- /ko -->
-                    <!-- ko template: {name: getTemplate(), data: item.product_part_number, as: 'price'} --><!-- /ko -->
                 <!-- /ko -->
                 <!-- /ko -->
+
                 <div data-bind="html: 'SKU#: ' + item.product_sku"></div>
                 <div data-bind="html: 'Manufacturer: ' + item.product_manufacturer"></div>
-
+                <div data-bind="html: 'Part #: ' + item.product_part_number"></div>
 
                 <div class="details-qty qty">
                     <label class="label" data-bind="i18n: 'Qty', attr: {
@@ -110,10 +104,6 @@
                     <a href="#" data-bind="attr: {'data-cart-item': item_id, title: $t('Remove item')}"
                        class="action delete">
                         <span data-bind="i18n: 'Remove'"></span>
-                    </a>
-                    <a href="#" data-bind="attr: {'data-cart-item': item_id, title: $t('Add to Wishlist')}"
-                       class="action towishlist" data-action="add-to-wishlist" role="button" id="wishlist">
-                        <span data-bind="i18n: 'Wishlist'"></span>
                     </a>
                 </div>
             </div>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="design" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <tab>general</tab>
+            <group id="form_box" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>System Form Box</label>
+                <!--<field id="custom_rates" translate="label" sortOrder="135" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom Rates</label>
+                    <frontend_model>AAllen\UspsCustomRates\Block\Adminhtml\Form\Field\CustomRates</frontend_model>
+                    <backend_model>AAllen\UspsCustomRates\Model\Adminhtml\System\Config\CustomRates</backend_model>
+                    <config_path>carriers/usps/custom_rates</config_path>
+                </field> -->
+
+                <field id="custom_rates" translate="label" sortOrder="131" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Conditions</label>
+                    <frontend_model>Magento\CatalogWidget\Block\Product\Widget\Conditions</frontend_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

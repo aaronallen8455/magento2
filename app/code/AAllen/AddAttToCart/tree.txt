@@ -1,0 +1,26 @@
+Folder PATH listing
+Volume serial number is 8430-F64F
+C:.
+|   registration.php
+|   tree.txt
+|   
++---etc
+|   |   module.xml
+|   |   
+|   \---frontend
+|           di.xml
+|           
++---Plugin
+|       DefaultItem.php
+|       
+\---view
+    +---frontend
+    |   \---layout
+    |           checkout_cart_sidebar_item_renderers.xml
+    |           
+    \---web
+        \---template
+            \---minicart
+                \---item
+                        default.html
+                        

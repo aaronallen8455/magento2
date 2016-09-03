@@ -9,6 +9,8 @@
 namespace AAllen\Sandbox\Controller\Box;
 
 
+use Magento\Catalog\Model\Product;
+use Magento\Checkout\Model\Cart;
 use Magento\Customer\Model\CustomerFactory;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
@@ -18,12 +20,15 @@ class Index extends Action
 {
     protected $customerFactory;
     protected $resultPageFactory;
+    /** @var Cart $cart */
+    protected $cart;
 
-    public function __construct(Context $context, PageFactory $pageFactory, CustomerFactory $customerFactory)
+    public function __construct(Context $context, PageFactory $pageFactory, CustomerFactory $customerFactory, Cart $cart)
     {
         $this->customerFactory = $customerFactory;
         $this->resultPageFactory = $pageFactory;
         parent::__construct($context);
+        $this->cart = $cart;
     }
 
     public function execute()
@@ -58,6 +63,15 @@ class Index extends Action
             $block->getNameInLayout(),
             'cat_menu'
         );
+
+        //$productFactory = $this->_objectManager->create('\Magento\Catalog\Model\ProductFactory');
+        //$product = $productFactory->create();
+        //$product->load(20);
+//
+        //var_dump($this->cart->getQuoteProductIds());
+        //$this->cart->addProduct($product);
+        $this->cart->truncate();
+        $this->cart->save();
 
         return $resultPage;
     }

@@ -1,0 +1,28 @@
+Folder PATH listing
+Volume serial number is 8430-F64F
+C:.
+|   registration.php
+|   tree.txt
+|   
++---Controller
+|   \---Cart
+|           Add.php
+|           
++---etc
+|   |   module.xml
+|   |   
+|   \---frontend
+|           routes.xml
+|           
+\---view
+    \---frontend
+        +---layout
+        |       catalog_product_view.xml
+        |       
+        +---templates
+        |       buynow.phtml
+        |       
+        \---web
+            \---js
+                    buy-now.js
+                    

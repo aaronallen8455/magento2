@@ -63,10 +63,18 @@ class Topmenu
             /** @var Block $block */
             foreach ($blocks as $block) {
 
+                $active = false;
                 if ($url = $block->getUrl()) {
+                    $baseUrl = $this->_storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_LINK);
+
                     //check if link is relative or absolute
                     if (!preg_match('/^http(s)?:\/\//', $url)) {
-                        $url = $this->_storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_LINK) . $url;
+                        $url = $baseUrl . $url;
+                    }
+
+                    // check if link is active
+                    if ($url === $baseUrl . ltrim($_SERVER['REQUEST_URI'], '/')) {
+                        $active = true;
                     }
                 }
 

@@ -1,6 +1,4 @@
-/**
- * Created by Aaron Allen on 8/27/2016.
- */
+
 define([
     'jquery',
     'mage/mage',
@@ -10,17 +8,6 @@ define([
     "use strict";
 
     return function (config, element) {
-        //$(element).click(function (e) {
-
-            // add 'buy now' flag to form
-            //form.append(
-            //    $('<input type="hidden" name="buy-now" value="1">')
-            //);
-            //// change form action
-            //var url = form.attr('action').replace('checkout/cart/add', 'buynow/cart/add');
-            //form.attr('action', url);
-
-            //return false;
 
         $(element).click(function () {
             var form = $(config.form),
@@ -28,24 +15,18 @@ define([
                 bindSubmit: false
             });
 
-            // add 'buy now' flag to form
-            form.append(
-                $('<input type="hidden" name="buy-now" value="1">')
-            );
             // change form action
-            var url = form.attr('action').replace('checkout/cart/add', 'buynow/cart/add');
-            form.attr('action', url);
+            var baseUrl = form.attr('action'),
+                buyNowUrl = baseUrl.replace('checkout/cart/add', 'buynow/cart/add');
+
+            form.attr('action', buyNowUrl);
 
             widget.catalogAddToCart('submitForm', form);
-            //todo: set back to defaults
+
+            // set form action back
+            form.attr('action', baseUrl);
 
             return false;
         });
-
-
-
-
-            //return false;
-        //});
     }
 });

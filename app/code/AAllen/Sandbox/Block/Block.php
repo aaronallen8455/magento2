@@ -10,6 +10,8 @@ namespace AAllen\Sandbox\Block;
 
 
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
+use Magento\Checkout\Model\Cart;
+use Magento\Checkout\Model\Session;
 use Magento\Cms\Api\PageRepositoryInterface;
 use Magento\Cms\Model\Page;
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -28,6 +30,9 @@ class Block extends Template
     protected $pageRepository;
     protected $searchCriteriaBuilder;
     protected $storeGroupResource;
+    protected $cart;
+    protected $cartHelper;
+    protected $checkoutSession;
 
     public function __construct(
         Context $context,
@@ -37,8 +42,14 @@ class Block extends Template
         PageRepositoryInterface $pageRepository,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         \Magento\Store\Model\ResourceModel\Group $group,
+        Cart $cart,
+        \Magento\Checkout\Helper\Cart $cartHelper,
+        Session $session,
         array $data)
     {
+        $this->checkoutSession = $session;
+        $this->cartHelper = $cartHelper;
+        $this->cart = $cart;
         $this->storeGroupResource = $group;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->pageRepository = $pageRepository;
@@ -47,6 +58,12 @@ class Block extends Template
         $this->_passedData = $data;
         $this->_themeProvider = $themeProvider;
         parent::__construct($context, $data);
+    }
+
+    public function inCart()
+    {
+        $quote = $this->checkoutSession->getQuote();
+
     }
 
     public function testDataObject() {
