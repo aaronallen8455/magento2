@@ -1,17 +1,17 @@
 <?php /** @var $block \AAllen\VideoGallery\Block\VideoGallery */ $block ?>
 
-<?php echo $block->getTreeHtml() ?>
+<div class="video-gallery-tree">
+    <ul>
+        <?php echo $block->getTreeHtml() ?>
+    </ul>
+</div>
 
-
-<!--
 <div id="player"></div>
 
 <script type="text/x-magento-init">
     {
-        "*": {
-            "AAllen_VideoGallery/js/video-gallery": {
-                "code": "KAclL84Qq8E"
-            }
+        ".video-gallery-tree": {
+            "AAllen_VideoGallery/js/video-gallery": {}
         }
     }
-</script>-->
+</script>
