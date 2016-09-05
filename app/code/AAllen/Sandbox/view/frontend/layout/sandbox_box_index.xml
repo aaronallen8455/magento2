@@ -6,6 +6,7 @@
     <body>
         <referenceContainer name="content">
             <block name="form" class="Magento\Framework\View\Element\Template" template="Your_Module::form.phtml"/>
+            <block class="Magento\Catalog\Block\Product\View\Gallery" name="product.info.media.image" template="Magento_Catalog::product/view/gallery.phtml"/>
 
             <block name="cmsmenu" class="AAllen\CmsTopmenu\Block\Menu"/>
             <!--<block name="menu" class="Magento\Theme\Block\Html\Topmenu"/>-->
@@ -13,5 +14,6 @@
         <referenceContainer name="sidebar.main">
             <block name="men" class="AAllen\SidebarMenu\Block\Menu"/>
         </referenceContainer>
+
     </body>
 </page>

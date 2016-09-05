@@ -9,11 +9,13 @@
 namespace AAllen\Sandbox\Controller\Box;
 
 
+use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Model\Product;
 use Magento\Checkout\Model\Cart;
 use Magento\Customer\Model\CustomerFactory;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
 
 class Index extends Action
@@ -22,9 +24,20 @@ class Index extends Action
     protected $resultPageFactory;
     /** @var Cart $cart */
     protected $cart;
+    protected $coreRegistry;
+    protected $productRepo;
 
-    public function __construct(Context $context, PageFactory $pageFactory, CustomerFactory $customerFactory, Cart $cart)
+    public function __construct(
+        Context $context,
+        PageFactory $pageFactory,
+        CustomerFactory $customerFactory,
+        Cart $cart,
+        Registry $registry,
+        ProductRepositoryInterface $productRepository
+    )
     {
+        $this->productRepo = $productRepository;
+        $this->coreRegistry = $registry;
         $this->customerFactory = $customerFactory;
         $this->resultPageFactory = $pageFactory;
         parent::__construct($context);
@@ -33,8 +46,27 @@ class Index extends Action
 
     public function execute()
     {
+        // feed product to media gallery
+        $product = $this->productRepo->getById(2);
+        $this->coreRegistry->register('product', $product);
+
+        $url = '';
+        $images = $product->getMediaGalleryImages();
+        if ($images instanceof \Magento\Framework\Data\Collection) {
+            foreach ($images as $image) {
+                /* @var \Magento\Framework\DataObject $image */
+                $url = $image->getVideoUrl();
+            }
+        }
+
+
+        //youtube api key  AIzaSyDNPeLdIzruUJjoUKnjYI0VcICznNJVBwg
+
+
 
         $resultPage = $this->resultPageFactory->create();
+
+        //\Zend_Debug::dump($url);
 
         $block = $resultPage->getLayout()->createBlock(
             'AAllen\Sandbox\Block\Block',
