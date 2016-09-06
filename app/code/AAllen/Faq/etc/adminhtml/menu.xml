@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="AAllen_Faq::questions" title="FAQ" module="AAllen_Faq" resource="AAllen_Faq::questions"
+             sortOrder="50" parent="Magento_Backend::content" action="faq/question"/>
+    </menu>
+</config>

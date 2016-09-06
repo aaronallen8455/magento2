@@ -1,21 +1,17 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Admin
- * Date: 5/15/2016
- * Time: 12:01 AM
+ * User: Aaron Allen
+ * Date: 9/5/2016
+ * Time: 5:36 PM
  */
 
-namespace AAllen\MenuBlock\Model\ResourceModel;
+namespace AAllen\Faq\Model\ResourceModel;
 
 
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
-use Magento\Framework\Model\ResourceModel\Db\Context;
-use Magento\Framework\Model\AbstractModel;
-use Magento\Store\Model\StoreManagerInterface;
 
-class Block extends AbstractDb
+class Faq extends AbstractDb 
 {
     /**
      * Store model
@@ -55,29 +51,8 @@ class Block extends AbstractDb
     protected function _construct()
     {
         //this where the database table and ID column is defined.
-        $this->_init('aallen_menublock_block', 'block_id');
+        $this->_init('aallen_faq_faq', 'faq_id');
     }
-
-    ///**
-    // * Retrieve select objects for load object data
-    // *
-    // * @param string $field
-    // * @param mixed $value
-    // * @param \AAllen\MenuBlock\Model\Block $object
-    // * @return \Zend_Db_Select
-    // */
-    //protected function _getLoadSelect($field, $value, $object)
-    //{
-    //    //allows us to filter only active posts. We don't want to load inactive posts!
-    //    $select = parent::_getLoadSelect($field, $value, $object);
-//
-    //    if ($object->getStoreId()) {
-//
-    //        $select->where('is_active = ?', 1)->limit(1);
-    //    }
-//
-    //    return $select;
-    //}
 
     /**
      * Retrieve select object for load object data
@@ -94,17 +69,17 @@ class Block extends AbstractDb
         if ($object->getStoreId()) {
             $storeIds = [\Magento\Store\Model\Store::DEFAULT_STORE_ID, (int)$object->getStoreId()];
             $select->join(
-                ['aallen_menublock_block_store' => $this->getTable('aallen_menublock_block_store')],
-                $this->getMainTable() . '.block_id = aallen_menublock_block_store.page_id',
+                ['aallen_faq_faq_store' => $this->getTable('aallen_faq_faq_store')],
+                $this->getMainTable() . '.faq_id = aallen_faq_faq_store.page_id',
                 []
             )->where(
                 'is_active = ?',
                 1
             )->where(
-                'aallen_menublock_block_store.store_id IN (?)',
+                'aallen_faq_faq_store.store_id IN (?)',
                 $storeIds
             )->order(
-                'aallen_menublock_block_store.store_id DESC'
+                'aallen_faq_faq_store.store_id DESC'
             )->limit(
                 1
             );
@@ -126,8 +101,8 @@ class Block extends AbstractDb
         $select = $this->getConnection()->select()->from(
             ['cp' => $this->getMainTable()]
         )->join(
-            ['cps' => $this->getTable('aallen_menublock_block_store')],
-            'cp.block_id = cps.block_id',
+            ['cps' => $this->getTable('aallen_faq_faq_store')],
+            'cp.faq_id = cps.faq_id',
             []
         )->where(
             'cp.identifier = ?',
@@ -156,32 +131,6 @@ class Block extends AbstractDb
     }
 
     /**
-     * Process post data before saving
-     *
-     * @param AbstractModel $object
-     * @return $this
-     * @throws LocalizedException
-     */
-    protected function _beforeSave(AbstractModel $object)
-    {
-        //we need to make sure we're saving valid data, so a little validation is handled here
-        if (!$this->_isValidUrl($object)) {
-            throw new LocalizedException(
-                __('The link URL contains invalid characters.')
-            );
-        }
-
-        //validate the width field
-        if ($width = $object->getWidth() && !filter_var($object->getWidth(), FILTER_VALIDATE_INT, ['min_range'=>5])) {
-            throw new LocalizedException(
-                __('The CMS block width is invalid.')
-            );
-        }
-
-        return parent::_beforeSave($object);
-    }
-
-    /**
      * Assign block to store views
      *
      * @param \Magento\Framework\Model\AbstractModel $object
@@ -194,12 +143,12 @@ class Block extends AbstractDb
         if (empty($newStores)) {
             $newStores = (array)$object->getStoreId();
         }
-        $table = $this->getTable('aallen_menublock_block_store');
+        $table = $this->getTable('aallen_faq_faq_store');
         $insert = array_diff($newStores, $oldStores);
         $delete = array_diff($oldStores, $newStores);
 
         if ($delete) {
-            $where = ['block_id = ?' => (int)$object->getId(), 'store_id IN (?)' => $delete];
+            $where = ['faq_id = ?' => (int)$object->getId(), 'store_id IN (?)' => $delete];
 
             $this->getConnection()->delete($table, $where);
         }
@@ -208,7 +157,7 @@ class Block extends AbstractDb
             $data = [];
 
             foreach ($insert as $storeId) {
-                $data[] = ['block_id' => (int)$object->getId(), 'store_id' => (int)$storeId];
+                $data[] = ['faq_id' => (int)$object->getId(), 'store_id' => (int)$storeId];
             }
 
             $this->getConnection()->insertMultiple($table, $data);
@@ -225,9 +174,9 @@ class Block extends AbstractDb
      */
     protected function _beforeDelete(\Magento\Framework\Model\AbstractModel $object)
     {
-        $condition = ['block_id = ?' => (int)$object->getId()];
+        $condition = ['faq_id = ?' => (int)$object->getId()];
 
-        $this->getConnection()->delete($this->getTable('aallen_menublock_block_store'), $condition);
+        $this->getConnection()->delete($this->getTable('aallen_faq_faq_store'), $condition);
 
         return parent::_beforeDelete($object);
     }
@@ -243,10 +192,10 @@ class Block extends AbstractDb
         $connection = $this->getConnection();
 
         $select = $connection->select()->from(
-            $this->getTable('aallen_menublock_block_store'),
+            $this->getTable('aallen_faq_faq_store'),
             'store_id'
         )->where(
-            'block_id = ?',
+            'faq_id = ?',
             (int)$blockId
         );
 
@@ -273,18 +222,5 @@ class Block extends AbstractDb
     public function getStore()
     {
         return $this->_storeManager->getStore($this->_store);
-    }
-
-    /**
-     * Check for valid Href
-     *
-     * @param AbstractModel $object
-     * @return bool
-     */
-    protected function _isValidUrl($object)
-    {
-        if ($url = $object->getData('url'))
-            return preg_match('/^(http:\/\/|https:\/\/)?[\w\d\/_\-=+?#.&]+$/', $object->getData('url'));
-        return true;
     }
 }
