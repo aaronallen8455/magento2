@@ -104,10 +104,20 @@
                 </item>
             </argument>
         </field>
+        <field name="position">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Position</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">block</item>
+                    <item name="dataScope" xsi:type="string">position</item>
+                </item>
+            </argument>
+        </field>
         <field name="answer">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">Answer</item>
+                    <item name="label" xsi:type="string"/>
                     <item name="formElement" xsi:type="string">wysiwyg</item>
                     <item name="source" xsi:type="string">block</item>
                     <item name="wysiwyg" xsi:type="boolean">true</item>
@@ -119,15 +129,6 @@
                 </item>
             </argument>
         </field>
-        <field name="position">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">Position</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">block</item>
-                    <item name="dataScope" xsi:type="string">position</item>
-                </item>
-            </argument>
-        </field>
+
     </fieldset>
 </form>

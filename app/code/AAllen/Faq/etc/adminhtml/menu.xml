@@ -3,6 +3,6 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add id="AAllen_Faq::questions" title="FAQ" module="AAllen_Faq" resource="AAllen_Faq::questions"
-             sortOrder="50" parent="Magento_Backend::content" action="faq/question"/>
+             sortOrder="50" parent="Magento_Backend::content_elements" action="faq/question"/>
     </menu>
 </config>

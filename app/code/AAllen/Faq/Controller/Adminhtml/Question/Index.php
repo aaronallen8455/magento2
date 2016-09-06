@@ -2,9 +2,9 @@
 
 namespace AAllen\Faq\Controller\Adminhtml\Question;
 
-use Magento\Backend\App\Action;
+use AAllen\Faq\Controller\Adminhtml\Faq;
 
-class Index extends Action
+class Index extends Faq
 {
     /**
      * @var \Magento\Framework\View\Result\PageFactory
@@ -41,4 +41,6 @@ class Index extends Action
 
         return $resultPage;
     }
+
+
 }

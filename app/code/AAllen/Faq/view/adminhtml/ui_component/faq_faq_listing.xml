@@ -18,7 +18,7 @@
     </argument>
     <dataSource name="faq_faq_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Magento\Cms\Ui\Component\DataProvider</argument>
+            <argument name="class" xsi:type="string">FaqGridDataProvider</argument>
             <argument name="name" xsi:type="string">faq_faq_listing_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">faq_id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
@@ -112,7 +112,7 @@
             <item name="config" xsi:type="array">
                 <item name="editorConfig" xsi:type="array">
                     <item name="selectProvider" xsi:type="string">faq_faq_listing.faq_faq_listing.faq_faq_columns.ids</item>
-                    <item name="enabled" xsi:type="boolean">true</item>
+                    <item name="enabled" xsi:type="boolean">false</item>
                     <item name="indexField" xsi:type="string">faq_id</item>
                     <item name="clientConfig" xsi:type="array">
                         <item name="saveUrl" xsi:type="url" path="cms/block/inlineEdit"/>
@@ -202,10 +202,12 @@
                 </item>
             </argument>
         </column>
-        <actionsColumn name="actions" class="Magento\Cms\Ui\Component\Listing\Column\BlockActions">
+        <actionsColumn name="actions" class="AAllen\Faq\Ui\Component\Listing\Column\BlockActions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="indexField" xsi:type="string">faq_id</item>
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">107</item>
                 </item>
             </argument>
         </actionsColumn>

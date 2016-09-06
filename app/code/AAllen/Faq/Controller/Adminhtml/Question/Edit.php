@@ -2,9 +2,9 @@
 
 namespace AAllen\Faq\Controller\Adminhtml\Question;
 
-use Magento\Backend\App\Action;
+use AAllen\Faq\Controller\Adminhtml\Faq;
 
-class Edit extends Action
+class Edit extends Faq
 {
     /**
      * @var \Magento\Framework\View\Result\PageFactory

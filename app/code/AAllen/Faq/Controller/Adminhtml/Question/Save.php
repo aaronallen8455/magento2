@@ -12,7 +12,7 @@ use AAllen\Faq\Model\Faq;
 use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Framework\Exception\LocalizedException;
 
-class Save extends \Magento\Cms\Controller\Adminhtml\Block
+class Save extends \AAllen\Faq\Controller\Adminhtml\Faq
 {
     /**
      * @var DataPersistorInterface
