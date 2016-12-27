@@ -1,0 +1,14 @@
+-Subtotal values are pulled from window.checkoutConfig.totalsData
+--total_segments has the value objects with 'code' attribute
+---The checkout/js/model/quote.js sets an observable on windows.checkoutConfig.totalsData
+----checkout/js/model/totals.js calls getSegment(code) which gets the object from totalsData.total_segments with matching code.
+-----tax/js/view/checkout/summary/tax.js has getValue() that returns getSegment('tax') from totals.
+------tax.js is passed as an item to the config tree in checkout_index_index.xml
+--totalsData is set in Magento\Checkout\Model\DefaultConfigProvider
+---total segments are obtained by instantiating Magento\Quote\Model\Cart\Totals based on specified cart id ($this->checkoutSession->getQuote()->getId() in default config provider).
+----total segments are set on the Totals object when you instantiate it using the CartTotalRepository.
+-----The calculatedTotals (total segments) come from Magento\Quote\Model\Cart\TotalsConverter->process($addressTotals)
+------Raw data comes from Magento\Quote\Model\Quote\Address->getTotals()
+-in etc/sales.xml, we define a 'total' class
+-Checkout config is created from the configs passed to Magento\Checkout\Model\CompositeConfigProvider
+-

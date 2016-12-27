@@ -1,0 +1,48 @@
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="aallen_sweepin" class="AAllen\SweepIn\Block\Widget\SweepIn"
+            placeholder_image="Magento_Cms::images/widget_block.png">
+        <label translate="true">Sweep-In</label>
+        <description translate="true">Causes contents to sweep in to view as user scrolls down the page.</description>
+        <parameters>
+            <parameter name="block_id" xsi:type="block" visible="true" required="true" sort_order="20">
+                <label translate="true">Block Content</label>
+                <description>The CMS block to use as content.</description>
+                <block class="Magento\Cms\Block\Adminhtml\Block\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Block...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+
+            <parameter name="direction" xsi:type="select" visible="true" required="true" sort_order="30">
+                <label translate="true">Sweep Direction</label>
+                <options>
+                    <option name="left" value="left" selected="true">
+                        <label translate="true">Left</label>
+                    </option>
+                    <option name="up" value="up">
+                        <label translate="true">Up</label>
+                    </option>
+                    <option name="right" value="right">
+                        <label translate="true">Right</label>
+                    </option>
+                    <option name="down" value="down">
+                        <label translate="true">Down</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="template" xsi:type="select" visible="true" required="true" sort_order="40">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="widget/sweepin.phtml" selected="true">
+                        <label translate="true">Default Sweep-In Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

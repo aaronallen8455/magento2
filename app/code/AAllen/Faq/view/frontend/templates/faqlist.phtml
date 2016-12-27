@@ -1,0 +1,38 @@
+<?php /** @var \AAllen\Faq\Block\FaqList $block */ $block ?>
+
+<?php $faqs = $block->getFaqs() ?>
+<div class="faq-links">
+    <ol>
+        <?php for ($i=0; $i<count($faqs); $i++): ?>
+            <li>
+                <a href="#" data-index="<?php echo $i ?>">
+                    <span><?php /** @escapeNotVerified */ echo __($faqs[$i]->getQuestion()) ?></span>
+                </a>
+            </li>
+        <?php endfor; ?>
+    </ol>
+</div>
+
+<div class="faq-answers">
+    <dl>
+        <?php for ($i=0; $i<count($faqs); $i++): ?>
+            <dt data-index="<?php echo $i ?>">
+                <?php /** @escapeNotVerified */ echo __($faqs[$i]->getQuestion()) ?>
+            </dt>
+            <dd>
+                <?php /** @escapeNotVerified */ echo __($faqs[$i]->getAnswer()) ?>
+            </dd>
+        <?php endfor; ?>
+    </dl>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "AAllen_Faq/js/faq-list": {
+                "links": ".faq-links",
+                "answers": ".faq-answers"
+            }
+        }
+    }
+</script>

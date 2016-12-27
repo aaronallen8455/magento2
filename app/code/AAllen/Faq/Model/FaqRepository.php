@@ -10,7 +10,7 @@ namespace AAllen\Faq\Model;
 
 
 use AAllen\Faq\Api\FaqRepositoryInterface;
-use AAllen\Faq\Model\ResourceModel\Faq;
+use AAllen\Faq\Model\ResourceModel\Faq as FaqResource;
 use Magento\Store\Model\StoreManagerInterface;
 
 class FaqRepository implements FaqRepositoryInterface
@@ -32,7 +32,7 @@ class FaqRepository implements FaqRepositoryInterface
      */
     public function __construct(
         StoreManagerInterface $storeManager,
-        Faq $resource,
+        FaqResource $resource,
         \AAllen\Faq\Model\FaqFactory $faqFactory
     ){
         $this->storeManager = $storeManager;
