@@ -24,8 +24,7 @@ class FaqList extends Template
     public function __construct(
         Template\Context $context,
         CollectionFactory $faqRepository,
-
-        array $data
+        array $data = []
     )
     {
         $this->collection = $faqRepository->create();

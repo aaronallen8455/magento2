@@ -9,6 +9,8 @@
 namespace AAllen\Sandbox\Block;
 
 
+use Magento\Catalog\Block\Product\ImageBuilder;
+use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 use Magento\Checkout\Model\Cart;
 use Magento\Checkout\Model\Session;
@@ -18,6 +20,8 @@ use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
+use Magento\Sales\Model\Order;
+use Magento\Sales\Model\OrderRepository;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManagerInterface;
 
@@ -33,6 +37,8 @@ class Block extends Template
     protected $cart;
     protected $cartHelper;
     protected $checkoutSession;
+    protected $imageBuilder;
+    protected $orderRepository;
 
     public function __construct(
         Context $context,
@@ -45,6 +51,8 @@ class Block extends Template
         Cart $cart,
         \Magento\Checkout\Helper\Cart $cartHelper,
         Session $session,
+        ImageBuilder $imageBuilder,
+        OrderRepository $orderRepository,
         array $data)
     {
         $this->checkoutSession = $session;
@@ -57,6 +65,8 @@ class Block extends Template
         $this->_productCollectionFactory = $productCollectionFactory;
         $this->_passedData = $data;
         $this->_themeProvider = $themeProvider;
+        $this->imageBuilder = $imageBuilder;
+        $this->orderRepository = $orderRepository;
         parent::__construct($context, $data);
     }
 
@@ -106,16 +116,36 @@ class Block extends Template
         return $page->getData($attributeName);
     }
 
+    public function getPayment()
+    {
+        /** @var Order $order */
+        $order = $this->orderRepository->get(1);
+        /** @var Order\Payment $payment */
+        $payment = $order->getPayment();
+        $method = $payment->getMethodInstance();
+        $methodTitle = $method->getTitle();
+    }
+
     public function getProductNames()
     {
         /** @var Collection $collection */
         $collection = $this->_productCollectionFactory->create();
         $collection->addAttributeToSelect('name');
+        /** @var Product $item */
         foreach ($collection as $item){
-            var_dump($item->getData());
-            var_dump($item->getCategoryIds());
+            var_dump($this->imageBuilder->setProduct($item)->setImageId('category_page_grid')->create()->getImageUrl());
+            //var_dump($item->getData());
+            //var_dump($item->getCategoryIds());
+            //$categories = $item->getCategoryCollection()->addFieldToSelect('name');
+            //foreach ($categories as $category) {
+            //    var_dump($category->getName());
+            //}
             break;
         }
+        $this->imageBuilder
+            ->setProduct($item)
+            ->setImageId('category_page_grid')
+            ->create();
     }
     
     public function testProductMethod()

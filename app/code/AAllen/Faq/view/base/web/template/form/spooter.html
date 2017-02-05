@@ -1,0 +1,42 @@
+<!--<input class="admin__control-text" type="text"
+       data-bind="
+        event: {focusout: userChanges},
+        value: hours,
+        hasFocus: focused,
+        valueUpdate: valueUpdate,
+        attr: {
+            name: 'hours',
+            placeholder: placeholder,
+            'aria-describedby': noticeId,
+            id: uid + 1,
+            disabled: disabled
+    }"/>
+
+<input class="admin__control-text" type="text"
+       data-bind="
+        event: {focusout: userChanges},
+        value: minutes,
+        valueUpdate: valueUpdate,
+        attr: {
+            name: 'minutes',
+            placeholder: placeholder,
+            'aria-describedby': noticeId,
+            id: uid + 2,
+            disabled: disabled
+    }"/>-->
+
+<select class="admin__control-select"
+        data-bind="
+        optgroup: hoursOpts,
+        optionsValue: 'value',
+        optionsText: 'label',
+        value: hours,
+        event: {change: userChanges}"/>
+
+<select class="admin__control-select"
+        data-bind="
+        optgroup: minutesOpts,
+        optionsValue: 'value',
+        optionsText: 'label',
+        value: minutes,
+        event: {change: userChanges}"/>

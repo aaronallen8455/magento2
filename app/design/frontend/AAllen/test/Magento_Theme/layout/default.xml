@@ -12,5 +12,12 @@
         <referenceContainer name="header.panel">
             <block class="Me\MyModule\Block\MyBlock" template="Me_MyModule::mytemplate.phtml" name="top.mylinks"/>
         </referenceContainer>-->
+        <referenceContainer name="header-wrapper">
+            <block class="Magento\Framework\View\Element\Text" name="logo.test">
+                <arguments>
+                    <argument name="text" xsi:type="string">test</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
     </body>
 </page>

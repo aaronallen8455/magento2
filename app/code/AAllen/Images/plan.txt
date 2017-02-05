@@ -1,0 +1,8 @@
+Use Magento\MediaStorage\Model\File\Uploader to upload an image file. Initialize it like in Gallery\Upload.php controller.
+
+The upload element is included in the form by adding block to the 'form_name' container in layout xml.
+The block to add is like Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Gallery\Content
+The uploader is added as a child and configured in this block in the prepareLayout method.
+The content block's `element` is set in Form\Gallery.php which is the fieldset element
+
+design_config_form.xml has a file upload UI component example - use that.

@@ -27,6 +27,57 @@
                                         </item>
                                     </item>
                                 </item>
+                                <item name="steps" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="shipping-step" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="shippingAddress" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="shipping-address-fieldset" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="street" xsi:type="array">
+                                                                    <item name="children" xsi:type="array">
+                                                                        <item name="test" xsi:type="array">
+                                                                            <item name="config" xsi:type="array">
+                                                                                <item name="input_type" xsi:type="string">checkbox</item>
+                                                                                <item name="elementTmpl" xsi:type="string">AAllen_Sandbox/form/element/city</item>
+                                                                            </item>
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+                                                                <!--<item name="city" xsi:type="array">
+                                                                    <item name="config" xsi:type="array">
+                                                                        <item name="elementTmpl" xsi:type="string">AAllen_Sandbox/form/element/city</item>
+                                                                        <item name="label" xsi:type="string">Label</item>
+                                                                    </item>
+                                                                </item>-->
+                                                                <item name="custom" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                                    <item name="config" xsi:type="array">
+                                                                        <item name="customScope" xsi:type="string">shippingAddress</item>
+                                                                        <item name="visible" xsi:type="boolean">true</item>
+                                                                        <item name="additionalClasses" xsi:type="array">
+                                                                            <item name="admin__field-wide" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                        <item name="template" xsi:type="string">ui/form/field</item>
+                                                                        <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                                        <item name="tooltip" xsi:type="array">
+                                                                            <item name="description" xsi:type="string" translate="true">For delivery questions.</item>
+                                                                        </item>
+                                                                    </item>
+                                                                    <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                    <item name="dataScope" xsi:type="string">shippingAddress.custom</item>
+                                                                    <item name="label" xsi:type="string">Custom Input</item>
+                                                                    <item name="sortOrder" xsi:type="string">1</item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
                             </item>
                         </item>
                     </item>

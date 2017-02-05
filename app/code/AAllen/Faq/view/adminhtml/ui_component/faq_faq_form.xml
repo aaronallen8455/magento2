@@ -104,11 +104,13 @@
                 </item>
             </argument>
         </field>
+
         <field name="position">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="label" xsi:type="string" translate="true">Position</item>
                     <item name="formElement" xsi:type="string">input</item>
+                    <item name="component" xsi:type="string">AAllen_Faq/js/form/element/spooter</item>
                     <item name="source" xsi:type="string">block</item>
                     <item name="dataScope" xsi:type="string">position</item>
                 </item>
@@ -129,6 +131,7 @@
                 </item>
             </argument>
         </field>
+
 
     </fieldset>
 </form>

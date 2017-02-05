@@ -1,0 +1,14 @@
+<form action="<?php echo $block->getUrl('checkout/cart/add') ?>" method="post">
+    <input
+        name="form_key"
+        type="hidden"
+        value="<?php /* @escapeNotVerified */ echo $block->getFormKey(); ?>"/>
+    <input
+        name="return_url"
+        type="hidden"
+        value="<?php echo $this->helper('Magento\Checkout\Helper\Cart')->getCartUrl() ?>"/>
+
+    <input type="hidden" name="product" value="5"/> <!-- Product ID goes here -->
+
+    <button type="submit">Add To Cart</button>
+</form>

@@ -1,0 +1,34 @@
+<div id="exampleContainer"/>
+
+<script id="exampleTemplate" type="text/x-magento-template">
+    <div>
+        <p>Name: <%- data.name -%></p>
+        <ul>
+            <% for(var o in data.options) { %>
+            <li><%- data.options[o] -%></li>
+            <% } %>
+        </ul>
+    </div>
+</script>
+
+
+
+<script>
+    require([
+        'mage/template',
+        'jquery',
+        'prototype'
+    ], function (mageTemplate, $) {
+
+        //<![CDATA[
+        var template = mageTemplate('#exampleTemplate', {
+            data: {
+                name: 'My product',
+                options: ['Option 1', 'Option 2']
+            }
+        });
+        //]]>
+
+        $('#exampleContainer').append(template);
+    });
+</script>

@@ -5,11 +5,13 @@
     </head>
     <body>
         <referenceContainer name="content">
-            <block name="form" class="Magento\Framework\View\Element\Template" template="Your_Module::form.phtml"/>
+            <block name="viewcount" class="AAllen\Sandbox\Block\ViewCount" template="AAllen_Sandbox::views.phtml"/>
+            <!--<block name="form" class="Magento\Framework\View\Element\Template" template="Your_Module::form.phtml"/>
             <block class="Magento\Catalog\Block\Product\View\Gallery" name="product.info.media.image" template="Magento_Catalog::product/view/gallery.phtml"/>
 
             <block name="cmsmenu" class="AAllen\CmsTopmenu\Block\Menu"/>
-            <!--<block name="menu" class="Magento\Theme\Block\Html\Topmenu"/>-->
+            <block name="menu" class="Magento\Theme\Block\Html\Topmenu"/>-->
+            <block name="tempTest" class="Magento\Framework\View\Element\Template" template="AAllen_Sandbox::magentoxtemplate.phtml"/>
         </referenceContainer>
         <referenceContainer name="sidebar.main">
             <block name="men" class="AAllen\SidebarMenu\Block\Menu"/>

@@ -11,6 +11,7 @@ namespace AAllen\Faq\Model;
 
 use AAllen\Faq\Api\FaqRepositoryInterface;
 use AAllen\Faq\Model\ResourceModel\Faq as FaqResource;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Store\Model\StoreManagerInterface;
 
 class FaqRepository implements FaqRepositoryInterface

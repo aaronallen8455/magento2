@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<virtualType name="AAllen\Images\Model\ResourceModel\Image\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">aallen_image</argument>
+			<argument name="resourceModel" xsi:type="string">AAllen\Images\Model\ResourceModel\Image\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="aallen_image_grid_data_source" xsi:type="string">AAllen\Images\Model\ResourceModel\Image\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+
+	<virtualType name="AAllen\Images\ImageUpload" type="Magento\Catalog\Model\ImageUploader">
+		<arguments>
+			<argument name="baseTmpPath" xsi:type="string">images/tmp</argument>
+			<argument name="basePath" xsi:type="string">images</argument>
+			<argument name="allowedExtensions" xsi:type="array">
+				<item name="jpg" xsi:type="string">jpg</item>
+				<item name="jpeg" xsi:type="string">jpeg</item>
+				<item name="gif" xsi:type="string">gif</item>
+				<item name="png" xsi:type="string">png</item>
+			</argument>
+		</arguments>
+	</virtualType>
+	<type name="AAllen\Images\Controller\Adminhtml\Image\Upload">
+		<arguments>
+			<argument name="imageUploader" xsi:type="object">AAllen\Images\ImageUpload</argument>
+		</arguments>
+	</type>
+	<type name="AAllen\Images\Controller\Adminhtml\Image\Save">
+		<arguments>
+			<argument name="imageUploader" xsi:type="object">AAllen\Images\ImageUpload</argument>
+		</arguments>
+	</type>
+
+	<preference for="AAllen\Images\Api\ImageRepositoryInterface" type="AAllen\Images\Model\ImageRepository"/>
+</config>
