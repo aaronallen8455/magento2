@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="aallen_slideshow" class="AAllen\Images\Block\Widget\SlideShow">
+        <label>SlideShow</label>
+        <description>Displays the selected images as a slide show.</description>
+        <parameters>
+            <parameter name="image1" xsi:type="select" visible="true" source_model="AAllen\Images\Model\Config\Source\ImagesSource">
+                <label>First Image</label>
+            </parameter>
+            <parameter name="image2" xsi:type="select" visible="true" source_model="AAllen\Images\Model\Config\Source\ImagesSource">
+                <label>Second Image</label>
+            </parameter>
+            <parameter name="image3" xsi:type="select" visible="true" source_model="AAllen\Images\Model\Config\Source\ImagesSource">
+                <label>Third Image</label>
+            </parameter>
+            <parameter name="image4" xsi:type="select" visible="true" source_model="AAllen\Images\Model\Config\Source\ImagesSource">
+                <label>Fourth Image</label>
+            </parameter>
+            <parameter name="image5" xsi:type="select" visible="true" source_model="AAllen\Images\Model\Config\Source\ImagesSource">
+                <label>Fifth Image</label>
+            </parameter>
+            <parameter name="image6" xsi:type="select" visible="true" source_model="AAllen\Images\Model\Config\Source\ImagesSource">
+                <label>Sixth Image</label>
+            </parameter>
+            <parameter name="duration" xsi:type="text" required="false" visible="true">
+                <label>Duration</label>
+                <description>Number of seconds until image switches.</description>
+                <value>5</value>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

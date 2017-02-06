@@ -107,4 +107,11 @@ interface ImageInterface
      * @return ImageInterface
      */
     public function setIsActive($isActive);
+
+    /**
+     * Get full image url
+     *
+     * @return string
+     */
+    public function getUrl();
 }

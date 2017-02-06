@@ -18,7 +18,6 @@
 			<item name="save" xsi:type="string">AAllen\Images\Block\Adminhtml\Image\Edit\SaveButton</item>
 			<item name="save_and_continue" xsi:type="string">AAllen\Images\Block\Adminhtml\Image\Edit\SaveAndContinueButton</item>
 		</item>
-		<item name="childrenFromMeta" xsi:type="boolean">true</item>
 	</argument>
 	<dataSource name="image_form_data_source">
 		<argument name="dataProvider" xsi:type="configurableObject">

@@ -13,7 +13,7 @@
 		<item name="buttons" xsi:type="array">
 			<item name="add" xsi:type="array">
 				<item name="name" xsi:type="string">add</item>
-				<item name="label" xsi:type="string">Add new Image</item>
+				<item name="label" xsi:type="string">Add New Image</item>
 				<item name="class" xsi:type="string">primary</item>
 				<item name="url" xsi:type="string">*/*/new</item>
 			</item>
@@ -45,8 +45,24 @@
 		<bookmark name="bookmark"/>
 		<columnsControls name="columns_controls"/>
 		<filters name="listing_filters"/>
+		<massaction name="listing_massaction">
+			<action name="delete">
+				<argument name="data" xsi:type="array">
+					<item name="config" xsi:type="array">
+						<item name="type" xsi:type="string">delete</item>
+						<item name="label" xsi:type="string" translate="true">Delete</item>
+						<item name="url" xsi:type="url" path="aallen_images/image/massDelete"/>
+						<item name="confirm" xsi:type="array">
+							<item name="title" xsi:type="string" translate="true">Delete items</item>
+							<item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>
+						</item>
+					</item>
+				</argument>
+			</action>
+		</massaction>
 		<paging name="listing_paging"/>
 	</listingToolbar>
+
 	<columns name="aallen_image_columns">
 		<argument name="data" xsi:type="array">
 			<item name="config" xsi:type="array">
@@ -134,15 +150,13 @@
 		</column>
 		<column name="is_active">
 			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">Magento\Cms\Model\Block\Source\IsActive</item>
 				<item name="config" xsi:type="array">
-					<item name="filter" xsi:type="string">text</item>
-					<item name="label" translate="true" xsi:type="string">Enabled</item>
-					<item name="editor" xsi:type="array">
-						<item name="editorType" xsi:type="string">text</item>
-						<item name="validation" xsi:type="array">
-							<item name="required-entry" xsi:type="boolean">true</item>
-						</item>
-					</item>
+					<item name="filter" xsi:type="string">select</item>
+					<item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+					<item name="editor" xsi:type="string">select</item>
+					<item name="dataType" xsi:type="string">select</item>
+					<item name="label" xsi:type="string" translate="true">Status</item>
 				</item>
 			</argument>
 		</column>

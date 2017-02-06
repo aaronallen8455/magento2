@@ -1,0 +1,11 @@
+<?php $images = $block->getImages() ?>
+<div class="slide-show" data-mage-init='
+{
+"AAllen_Images/js/slideshow":
+    {
+        "images": <?php echo json_encode($images) ?>,
+        "duration": <?php echo $block->getDuration() ?>
+    }
+}'>
+    <img src="<?php echo current($images) ?>">
+</div>

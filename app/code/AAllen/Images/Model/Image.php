@@ -4,9 +4,30 @@
 namespace AAllen\Images\Model;
 
 use AAllen\Images\Api\Data\ImageInterface;
+use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\Model\Context;
+use Magento\Store\Model\StoreManagerInterface;
 
 class Image extends \Magento\Framework\Model\AbstractModel implements ImageInterface
 {
+    protected $storeManager;
+
+    protected $_url;
+
+    public function __construct(
+        Context $context,
+        \Magento\Framework\Registry $registry,
+        ResourceModel\Image $resource = null,
+        ResourceModel\Image\Collection $resourceCollection = null,
+        StoreManagerInterface $storeManager,
+        array $data = []
+    )
+    {
+        $this->storeManager = $storeManager;
+
+        parent::__construct($context, $registry, $resource, $resourceCollection, $data);
+    }
+
     /**
      * @return void
      */
@@ -127,5 +148,13 @@ class Image extends \Magento\Framework\Model\AbstractModel implements ImageInter
     public function setIsActive($is_active)
     {
         return $this->setData(self::IS_ACTIVE, $is_active);
+    }
+
+    public function getUrl()
+    {
+        if (empty($this->_url)) {
+            $this->_url = $this->storeManager->getStore()->getBaseUrl(DirectoryList::MEDIA) . self::IMAGE_PATH . $this->getFileName();
+        }
+        return $this->_url;
     }
 }

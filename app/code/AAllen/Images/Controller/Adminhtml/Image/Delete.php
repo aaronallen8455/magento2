@@ -55,7 +55,6 @@ class Delete extends \AAllen\Images\Controller\Adminhtml\Image
                     $this->fileDriver->deleteFile($filePath);
                 }
 
-                $this->messageManager->addSuccessMessage($filePath);
                 $this->imageRepository->deleteById($id);
                 // display success message
                 $this->messageManager->addSuccess(__('You deleted the Image.'));
