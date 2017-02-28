@@ -23,7 +23,6 @@ class Index extends Action
     protected $customerFactory;
     protected $resultPageFactory;
     /** @var Cart $cart */
-    protected $cart;
     protected $coreRegistry;
     protected $productRepo;
 
@@ -31,7 +30,6 @@ class Index extends Action
         Context $context,
         PageFactory $pageFactory,
         CustomerFactory $customerFactory,
-        Cart $cart,
         Registry $registry,
         ProductRepositoryInterface $productRepository
     )
@@ -41,7 +39,6 @@ class Index extends Action
         $this->customerFactory = $customerFactory;
         $this->resultPageFactory = $pageFactory;
         parent::__construct($context);
-        $this->cart = $cart;
     }
 
     public function execute()
@@ -68,19 +65,19 @@ class Index extends Action
 
         //\Zend_Debug::dump($url);
 
-        $block = $resultPage->getLayout()->createBlock(
-            'AAllen\Sandbox\Block\Block',
-            'testing',
-            ['data' => ['test' => '1', 'ok' => 'Bitch']]
-        )->setTemplate(
-            'AAllen_Sandbox::template.phtml'
-        );
-
-        $resultPage->getLayout()->setChild(
-            'content',
-            $block->getNameInLayout(),
-            'test_block'
-        );
+        //$block = $resultPage->getLayout()->createBlock(
+        //    'AAllen\Sandbox\Block\Block',
+        //    'testing',
+        //    ['data' => ['test' => '1', 'ok' => 'Bitch']]
+        //)->setTemplate(
+        //    'AAllen_Sandbox::template.phtml'
+        //);
+//
+        //$resultPage->getLayout()->setChild(
+        //    'content',
+        //    $block->getNameInLayout(),
+        //    'test_block'
+        //);
 
         $block = $resultPage->getLayout()->createBlock(
             'AAllen\CatMenu\Block\CatMenu',
@@ -102,8 +99,8 @@ class Index extends Action
 //
         //var_dump($this->cart->getQuoteProductIds());
         //$this->cart->addProduct($product);
-        $this->cart->truncate();
-        $this->cart->save();
+        //$this->cart->truncate();
+        //$this->cart->save();
 
         return $resultPage;
     }

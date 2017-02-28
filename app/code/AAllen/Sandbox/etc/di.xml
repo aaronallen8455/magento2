@@ -10,6 +10,12 @@
         </arguments>
     </type>
 
+    <type name="Magento\Sales\Model\Order\Email\Container\Template">
+        <plugin name="templateVarsPlug" type="AAllen\Sandbox\Plugin\ShipEmailPlug" disabled="false"/>
+    </type>
+
+    <preference for="Magento\OfflineShipping\Model\Carrier\Flatrate" type="AAllen\Sandbox\Model\Carrier\Flatrate"/>
+
     <!--<preference for="Magento\Customer\Model\Account\Redirect" type="AAllen\Sandbox\Model\Account\Redirect" />-->
 
 </config>

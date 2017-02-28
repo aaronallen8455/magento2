@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Text">
+                <action method="setText">
+                    <argument name="text" xsi:type="string">TESTTESTTEST</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

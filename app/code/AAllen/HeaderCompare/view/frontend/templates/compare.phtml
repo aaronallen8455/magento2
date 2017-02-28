@@ -1,0 +1,33 @@
+
+<div data-block="compare" class="minicart-wrapper">
+    <a class="action showcompare" href="#" data-bind="scope: 'compare.products'">
+        <span class="text"><?php /* @escapeNotVerified */ echo __('Compare'); ?></span>
+        <span class="counter qty empty">
+            <span class="counter-label">
+            <!-- ko if: compareProducts().count -->
+                <!-- ko text: '(' + compareProducts().count --><!-- /ko -->
+                <!-- ko i18n: compareProducts().count > 1 ?'items' : 'item' + ')'--><!-- /ko -->
+                <!-- /ko -->
+            </span>
+        </span>
+    </a>
+    <div class="block block-minicart empty"
+         data-role="dropdownDialog"
+         data-mage-init='{"dropdownDialog":{
+            "appendTo":"[data-block=compare]",
+            "triggerTarget":".showcompare",
+            "timeout": "2000",
+            "closeOnMouseLeave": false,
+            "closeOnEscape": true,
+            "triggerClass":"active",
+            "parentClass":"active",
+            "buttons":[]}}'>
+        <div id="minicart-content-wrapper" data-bind="scope: 'compare.products'">
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        </div>
+        <?php echo $block->getChildHtml('compare.addons'); ?>
+    </div>
+    <script type="text/x-magento-init">
+    {"[data-block=compare]": {"Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout();?>}}
+    </script>
+</div>

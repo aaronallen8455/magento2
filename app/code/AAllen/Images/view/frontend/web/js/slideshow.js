@@ -19,17 +19,27 @@ define([
 
         nextImage: function () {
             var newImage = $('<img>')
-                .attr('src', this.getNextSource())
-                .css({maxWidth: this.container.innerWidth(), maxHeight: this.container.innerHeight()})
-                .appendTo(this.container);
+                .attr('src', this.getNextSource());
 
-            this.imageElement.css(
-                {
-                    position: 'absolute',
-                    marginLeft: (newImage.outerWidth() - this.imageElement.outerWidth())/2
-                }).fadeOut(2000, function () {
-                this.imageElement.remove();
-                this.imageElement = newImage;
+            newImage.load(function () {
+
+                if (newImage[0].height < this.container.outerHeight() - 5) {
+                    newImage.css('paddingBottom', (this.container.outerHeight() - 5) - newImage[0].height);
+                }
+
+                newImage.css({maxWidth: this.container.outerWidth(), maxHeight: this.container.outerHeight() - 5})
+                    .appendTo(this.container);
+
+
+                this.imageElement.css(
+                    {
+                        position: 'absolute',
+                        marginLeft: (newImage.outerWidth() - this.imageElement.outerWidth()) / 2
+                    }).fadeOut(2000, function () {
+                        this.imageElement.remove();
+                        this.imageElement = newImage;
+                    }.bind(this)
+                );
             }.bind(this));
         },
 

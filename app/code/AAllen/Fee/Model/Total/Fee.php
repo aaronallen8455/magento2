@@ -20,6 +20,7 @@ class Fee extends AbstractTotal
 
     public function __construct(QuoteValidator $quoteValidator)
     {
+        $this->setCode('fee');
         $this->quoteValidator = $quoteValidator;
     }
 
@@ -33,14 +34,17 @@ class Fee extends AbstractTotal
 
         $balance = 100;
 
-        $total->setTotalAmount('fee', $balance);
-        $total->setBaseTotalAmount('fee', $balance);
+        $total->addTotalAmount('fee', $balance);
+        $total->addBaseTotalAmount('fee', $balance);
 
-        $total->setFee($balance);
-        $total->setBaseFee($balance);
-
-        $total->setGrandTotal($total->getGrandTotal() + $balance);
-        $total->setBaseGrandTotal($total->getBaseGrandTotal() + $balance);
+        //$total->setTotalAmount('fee', $balance);
+        //$total->setBaseTotalAmount('fee', $balance);
+//
+        //$total->setFee($balance);
+        //$total->setBaseFee($balance);
+//
+        //$total->setGrandTotal($total->getGrandTotal() + $balance);
+        //$total->setBaseGrandTotal($total->getBaseGrandTotal() + $balance);
 
         return $this;
     }
@@ -62,8 +66,8 @@ class Fee extends AbstractTotal
     public function fetch(\Magento\Quote\Model\Quote $quote, \Magento\Quote\Model\Quote\Address\Total $total)
     {
         return [
-            'code' => 'fee',
-            'title' => 'fee',
+            'code' => $this->getCode(),
+            'title' => __('Fee'),
             'value' => 100
         ];
     }

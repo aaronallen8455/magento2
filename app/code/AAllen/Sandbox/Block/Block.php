@@ -18,6 +18,8 @@ use Magento\Cms\Api\PageRepositoryInterface;
 use Magento\Cms\Model\Page;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Component\ComponentRegistrar;
+use Magento\Framework\Component\ComponentRegistrarInterface;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Sales\Model\Order;
@@ -39,6 +41,7 @@ class Block extends Template
     protected $checkoutSession;
     protected $imageBuilder;
     protected $orderRepository;
+    protected $componentRegistrar;
 
     public function __construct(
         Context $context,
@@ -53,6 +56,7 @@ class Block extends Template
         Session $session,
         ImageBuilder $imageBuilder,
         OrderRepository $orderRepository,
+        ComponentRegistrarInterface $componentRegistrar,
         array $data)
     {
         $this->checkoutSession = $session;
@@ -67,13 +71,36 @@ class Block extends Template
         $this->_themeProvider = $themeProvider;
         $this->imageBuilder = $imageBuilder;
         $this->orderRepository = $orderRepository;
+        $this->componentRegistrar = $componentRegistrar;
         parent::__construct($context, $data);
+    }
+
+    public function getCartItemCount()
+    {
+        return $this->cart->getItemsCount();
+        /**
+         * can get from JS localStorage like this
+         * JSON.parse(window.localStorage.getItem('mage-cache-storage')).cart.summary_count;
+         */
+    }
+
+    public function getModuleDir($name)
+    {
+        $path = $this->componentRegistrar->getPath(ComponentRegistrar::MODULE, $name);
+
+        return $path;
     }
 
     public function inCart()
     {
         $quote = $this->checkoutSession->getQuote();
 
+    }
+
+    public function getShipMethod()
+    {
+        $order = $this->orderRepository->get(1);
+        return $order->getShippingMethod();
     }
 
     public function testDataObject() {

@@ -1,0 +1,15 @@
+<ul>
+<!-- ko foreach: { data: compareProducts().items, as: 'item' } -->
+    <li>
+        <a data-bind="{attr: {href: item.product_url}, text: item.name}"></a>
+        <!-- ko if: removeUrl = JSON.parse(item.remove_url) -->
+        <form data-bind="attr: {action: removeUrl.action}" method="post">
+            <input type="hidden" data-bind="value: removeUrl.data.product" name="product"/>
+            <input type="hidden" data-bind="value: removeUrl.data.uenc" name="uenc"/>
+            <button type="submit">Remove</button>
+        </form>
+        <!-- /ko -->
+    </li>
+<!-- /ko -->
+</ul>
+<button data-bind="click: function () {location.href = compareProducts().listUrl;}">Compare</button>

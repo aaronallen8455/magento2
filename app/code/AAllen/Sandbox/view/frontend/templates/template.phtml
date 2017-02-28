@@ -8,6 +8,20 @@
 }
 '></div>
 
+<di>
+    <?php echo $block->getCartItemCount() ?> TEST
+    <span data-bind="text: JSON.parse(window.localStorage.getItem('mage-cache-storage')).cart.summary_count"></span>
+</di>
+
+
+<div>
+    <?php echo $block->getModuleDir('AAllen_Test') ?>
+</div>
+
+<div>
+    <?php echo $block->getShipMethod() ?>
+</div>
+
 <div>
     <?php echo $block->getPayment() ?>
 </div>

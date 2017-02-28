@@ -39,7 +39,10 @@ class SlideShow extends Template implements BlockInterface
             $this->_images = [];
             for ($i=1; $i<=6; $i++) {
                 if ($data = $this->getData('image' . $i)) {
-                    $this->_images[] = $this->imageRepository->getById($data)->getUrl();
+                    $image = $this->imageRepository->getById($data);
+                    if ($image->isActive()) {
+                        $this->_images[] = $image->getUrl();
+                    }
                 }
             }
         }

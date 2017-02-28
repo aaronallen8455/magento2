@@ -24,7 +24,7 @@ define([
         },
 
         getValue: function () {
-            console.log('test');
+            console.log(totals.getSegment('fee'));
             var price = 0;
             if (this.totals()) {
                 price = totals.getSegment('fee').value;

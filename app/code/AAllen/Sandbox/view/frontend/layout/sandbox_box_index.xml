@@ -5,6 +5,7 @@
     </head>
     <body>
         <referenceContainer name="content">
+            <block name="thabox" class="AAllen\Sandbox\Block\Block" template="AAllen_Sandbox::template.phtml" cacheable="true"/>
             <block name="viewcount" class="AAllen\Sandbox\Block\ViewCount" template="AAllen_Sandbox::views.phtml"/>
             <!--<block name="form" class="Magento\Framework\View\Element\Template" template="Your_Module::form.phtml"/>
             <block class="Magento\Catalog\Block\Product\View\Gallery" name="product.info.media.image" template="Magento_Catalog::product/view/gallery.phtml"/>
