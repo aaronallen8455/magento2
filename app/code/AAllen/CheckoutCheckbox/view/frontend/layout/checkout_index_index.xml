@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="steps" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="billing-step" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="payment" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="afterMethods" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="giftwrap" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">AAllen_CheckoutCheckbox/js/view/checkout/billing/checkbox</item>
+                                                                    <item name="config" xsi:type="array">
+                                                                        <item name="customScope" xsi:type="string">additionalCharges</item>
+                                                                        <item name="visible" xsi:type="boolean">true</item>
+                                                                        <item name="additionalClasses" xsi:type="array">
+                                                                            <item name="admin__field-wide" xsi:type="boolean">true</item>
+                                                                        </item>
+                                                                        <item name="template" xsi:type="string">ui/form/field</item>
+                                                                        <item name="elementTmpl" xsi:type="string">ui/form/element/checkbox</item>
+                                                                        <item name="tooltip" xsi:type="array">
+                                                                            <item name="description" xsi:type="string" translate="true">Giftwrap</item>
+                                                                        </item>
+                                                                    </item>
+                                                                    <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                    <item name="dataScope" xsi:type="string">additionalCharges.giftwrap</item>
+                                                                    <item name="label" xsi:type="string">Gift Wrap</item>
+                                                                    <item name="sortOrder" xsi:type="string">1</item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                                <item name="sidebar" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="summary" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="totals" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="giftwrap" xsi:type="array">
+                                                            <item name="component"  xsi:type="string">AAllen_CheckoutCheckbox/js/view/checkout/summary/giftwrap</item>
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="title" xsi:type="string" translate="true">Gift Wrap</item>
+                                                            </item>
+                                                            <item name="sortOrder" xsi:type="string">60</item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                                <item name="itemsBefore" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="special" xsi:type="array">
+                                                            <item name="component" xsi:type="string">AAllen_CheckoutCheckbox/js/view/summary/special</item>
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="title" xsi:type="string" translate="true">Special</item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

@@ -21,7 +21,6 @@
                                                                 <item name="title" xsi:type="string" translate="true">Fee</item>
                                                             </item>
                                                         </item>
-
                                                     </item>
                                                 </item>
                                                 <!--<item name="cart_items" xsi:type="array">

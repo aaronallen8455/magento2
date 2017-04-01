@@ -1,0 +1,9 @@
+<ul>
+    <?php foreach ($block->getStores() as $store):?>
+    <li>
+        <a href="#" data-post='<?php echo $block->getTargetStorePostData($store) ?>'>
+            <?php echo $block->escapeHtml($store->getName()) ?>
+        </a>
+    </li>
+    <?php endforeach; ?>
+</ul>

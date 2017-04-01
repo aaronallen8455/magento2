@@ -13,6 +13,8 @@
             </argument>
         </arguments>
     </type>-->
+
+    <!--
     <type name="Magento\Framework\App\Router\NoRouteHandlerList">
         <arguments>
             <argument name="handlerClassesList" xsi:type="array">
@@ -22,5 +24,9 @@
                 </item>
             </argument>
         </arguments>
+    </type>-->
+
+    <type name="Magento\Framework\View\Result\Page">
+        <plugin name="productCustomLayout" type="AAllen\Test\Plugin\ProductLayout" disabled="false"/>
     </type>
 </config>

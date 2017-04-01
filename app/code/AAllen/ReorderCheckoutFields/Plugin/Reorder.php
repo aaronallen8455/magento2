@@ -25,22 +25,27 @@ class Reorder
             }
         }
 
-        if (isset($jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']
-            ['children']['shippingAddress']['children']['shipping-address-fieldset']['children']
-        )) {
-            $fields = &$jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']
-            ['children']['shippingAddress']['children']['shipping-address-fieldset']['children'];
+        $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']
+        ['children']['shippingAddress']['children']['shipping-address-fieldset']
+        ['children']['street']['sortOrder'] = 200;
 
-            foreach ($fields as $name => &$field) {
-                // street field uses different template than others
-                if ($name === 'street') {
-                    $field['config']['template'] = 'AAllen_ReorderCheckoutFields/group/group';
-                }
-                else {
-                    $field['config']['template'] = 'AAllen_ReorderCheckoutFields/form/field';
-                }
-            }
-        }
+        //if (isset($jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']
+        //    ['children']['shippingAddress']['children']['shipping-address-fieldset']['children']
+        //)) {
+        //    $fields = &$jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']
+        //    ['children']['shippingAddress']['children']['shipping-address-fieldset']['children'];
+//
+        //    foreach ($fields as $name => &$field) {
+        //        // street field uses different template than others
+        //        if ($name === 'street') {
+        //            //$field['config']['template'] = 'AAllen_ReorderCheckoutFields/group/group';
+        //            //$field['sortOrder'] = 200;
+        //        }
+        //        else {
+        //            //$field['config']['template'] = 'AAllen_ReorderCheckoutFields/form/field';
+        //        }
+        //    }
+        //}
 
         return $jsLayout;
     }

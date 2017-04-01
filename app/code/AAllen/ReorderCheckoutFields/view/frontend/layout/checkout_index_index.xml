@@ -28,18 +28,9 @@
                                                                 </item>
                                                                 <item name="displayArea" xsi:type="string">additional-fieldsets</item>
                                                                 <item name="children" xsi:type="array">
-
-                                                                    <item name="postcode" xsi:type="array">
-                                                                        <!-- post-code field has custom UI component -->
-                                                                        <item name="config" xsi:type="array">
-                                                                            <item name="template" xsi:type="string">AAllen_ReorderCheckoutFields/form/field</item>
-                                                                        </item>
-                                                                    </item>
-
-                                                                    <item name="city" xsi:type="array">
-                                                                        <item name="config" xsi:type="array">
-                                                                            <item name="template" xsi:type="string">AAllen_ReorderCheckoutFields/form/field</item>
-                                                                        </item>
+                                                                    <item name="street" xsi:type="array">
+                                                                        <item name="sortOrder" xsi:type="string">115</item>
+                                                                        <item name="position" xsi:type="string">115</item>
                                                                     </item>
                                                                 </item>
                                                             </item>

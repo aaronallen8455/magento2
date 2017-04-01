@@ -42,6 +42,7 @@ class Block extends Template
     protected $imageBuilder;
     protected $orderRepository;
     protected $componentRegistrar;
+    protected $shipmentInfo;
 
     public function __construct(
         Context $context,
@@ -57,6 +58,7 @@ class Block extends Template
         ImageBuilder $imageBuilder,
         OrderRepository $orderRepository,
         ComponentRegistrarInterface $componentRegistrar,
+        ShipmentInfo $shipmentInfo,
         array $data)
     {
         $this->checkoutSession = $session;
@@ -72,6 +74,7 @@ class Block extends Template
         $this->imageBuilder = $imageBuilder;
         $this->orderRepository = $orderRepository;
         $this->componentRegistrar = $componentRegistrar;
+        $this->shipmentInfo = $shipmentInfo;
         parent::__construct($context, $data);
     }
 
@@ -95,6 +98,13 @@ class Block extends Template
     {
         $quote = $this->checkoutSession->getQuote();
 
+    }
+
+    public function getShipFromTrack()
+    {
+        $shipment = $this->shipmentInfo->getShipmentFromTrackingNumber('ABC123');
+
+        return $shipment->getCreatedAt();
     }
 
     public function getShipMethod()
@@ -157,10 +167,17 @@ class Block extends Template
     {
         /** @var Collection $collection */
         $collection = $this->_productCollectionFactory->create();
-        $collection->addAttributeToSelect('name');
+        $collection->addAttributeToSelect('*');
+        $collection->addOrder('name', \Magento\Framework\Data\Collection::SORT_ORDER_ASC)->addOrder('price');
+        $collection->setPageSize(30);
+        $collection->setCurPage(1);
+        $collection->load();
+        $select = $collection->getSelectSql(true);
+        \Zend_Debug::dump(substr($select, -100));
         /** @var Product $item */
         foreach ($collection as $item){
-            var_dump($this->imageBuilder->setProduct($item)->setImageId('category_page_grid')->create()->getImageUrl());
+            var_dump($item->getName());
+            //var_dump($this->imageBuilder->setProduct($item)->setImageId('category_page_grid')->create()->getImageUrl());
             //var_dump($item->getData());
             //var_dump($item->getCategoryIds());
             //$categories = $item->getCategoryCollection()->addFieldToSelect('name');

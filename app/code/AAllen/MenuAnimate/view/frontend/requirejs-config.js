@@ -4,9 +4,11 @@
  */
 
 var config = {
-    map: {
-        "*": {
-            menu: "AAllen_MenuAnimate/js/menuextend"
+    'config': {
+        'mixins': {
+            'mage/menu': {
+                "AAllen_MenuAnimate/js/menuextend": true
+            }
         }
     }
 };

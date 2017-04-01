@@ -8,9 +8,14 @@ define([
 function ($, Class) {
     'use strict';
 
+    var v;
+
     return Class.extend({
         initialize: function (config, element) {
             this._super();
+
+            this.someValue = config.test;
+            v = config.test;
 
             $(element).html(config.test);
 
@@ -18,6 +23,10 @@ function ($, Class) {
         },
         method: function () {
             window.alert('method!');
-        }
+        },
+        getV: function () {
+            return v;
+        },
+        someValue: null
     });
 });

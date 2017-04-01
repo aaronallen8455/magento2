@@ -1,0 +1,99 @@
+What happens when a checkout field is updated? is the backend affected on update or when going to next step?
+
+Study shipping input :
+1) a post request is sent to the URL found in resource-url-manager.js when field is modified.
+2) various js modules use these URL to get data, such as new-address.js and get-totals.js.
+3) get-totals.js is a function that adds the totals data to the `quote` object
+
+
+When clicking the next button, a request is sent to customer/section/load.
+This is done by customer-data.js on line 85 (URL is passed in from customer-data.phtml).
+Nope, just gets 'messages'. Not useful
+
+
+The totals in the sidebar of checkout page are rendered by Magento_Checkout/js/view/summary/totals which has children for
+subtotal, shipping, and grand-total.
+(their templates render with methods like getValue() and variables like `title`(this comes from the layout xml config node))
+Each of these components extends Magento_Checkout/js/view/summary/abstract-total.
+These components get their data from Magento_Checkout/js/model/quote.
+
+The shipping information is not shown in side bar while in the shipping address section because a method on abstract-total
+called isFullMode returns false. What causes this method to be re-called when switching sections?
+
+The region field in the shipping address form gets the value of the Country field by using uiRegistry:
+var country = registry.get(this.parentName + '.' + 'country_id')
+The region.js module has a method that hides the select element and shows the input element if the selected country does
+not support regions. The plain input is `customEntry`.
+
+Task 1: Try making a `total` that changes when the value of one of the address inputs changes.
+
+Task 2: Add a checkbox to the billing step then when active, adds a total and increasing the grand total.
+
+example to follow: coupon code, when entered, sends request to `CouponManagement` which calls:
+$quote->setCouponCode($couponCode);
+$this->quoteRepository->save($quote->collectTotals());
+
+Magento_Quote/webapi.xml has the mapping for the coupon request path:
+<route url="/V1/guest-carts/:cartId/coupons/:couponCode" method="PUT">
+    <service class="Magento\Quote\Api\GuestCouponManagementInterface" method="set"/>
+    <resources>
+        <resource ref="anonymous" />
+    </resources>
+</route>
+
+There is also a call being made to carts/mine/payment-information. I think this is what updates the UI
+The call is made by doing this in set-coupon-code.js:
+
+var deferred = $.Deferred();
+isApplied(true);
+totals.isLoading(true);
+getPaymentInformationAction(deferred);
+$.when(deferred).done(function () {
+    fullScreenLoader.stopLoader();
+    totals.isLoading(false);
+});
+messageContainer.addSuccessMessage({
+    'message': message
+});
+
+from sections.xml in checkout module:
+<action name="rest/*/V1/carts/*/payment-information">
+    <section name="cart"/>
+    <section name="checkout-data"/>
+    <section name="last-ordered-items"/>
+</action>
+
+In CouponManagement, $quote->setCouponCode($couponCode); is called, but how does it change the total?
+In Quote model,
+$total = $this->totalsCollector->collect($this);
+$this->addData($total->getData());
+
+In `collectAddressTotals` method of `TotalsCollector`:
+
+foreach ($this->collectorList->getCollectors($quote->getStoreId()) as $collector) {
+    /** @var CollectorInterface $collector */
+    $collector->collect($quote, $shippingAssignment, $total);
+}
+
+This appears to go through the list of collectors specified in sales.xml
+
+Theory: have a controller that sets a value on the Quote object, (then trigger call to payment-information)
+then have the custom Collector check for that property and add to total if present.
+This works, however may need to add an attribute to Quote so that the setting persists when going back to shipping
+address from billing
+
+
+In DefaultConfigProvider (where much of the checkout-data appears to come from) totals data is culled from the CartTotalRepository
+The `get` method of CartTotalRepository takes a cartId and instantiates a
+\Magento\Quote\Api\Data\TotalsInterface and sets many hardcoded properties
+on it before returning that object. Some of these properties appear to correlate directly with `quote.js`.totals()
+Are the other fields inserted by :
+$this->dataObjectHelper->populateWithArray(
+    $quoteTotals,
+    $addressTotalsData,
+    '\Magento\Quote\Api\Data\TotalsInterface'
+);
+???
+Query: would placing a plugin on this method and inserting my own data cause the giftwrap total to be placed alongside the others
+in the correct place within the JS cache? YES
+

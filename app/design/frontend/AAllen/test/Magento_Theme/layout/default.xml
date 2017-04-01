@@ -10,7 +10,7 @@
         <!--<referenceBlock name="header.links" display="false"/>
 
         <referenceContainer name="header.panel">
-            <block class="Me\MyModule\Block\MyBlock" template="Me_MyModule::mytemplate.phtml" name="top.mylinks"/>
+            <block class="Magento\Framework\View\Element\Template" template="Magento_Theme::mytemplate.phtml" name="top.mylinks"/>
         </referenceContainer>-->
         <referenceContainer name="header-wrapper">
             <block class="Magento\Framework\View\Element\Text" name="logo.test">

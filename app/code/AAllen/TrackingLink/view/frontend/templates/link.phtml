@@ -1,0 +1,4 @@
+<?php
+$trackingHelper = $this->helper('AAllen\TrackingLink\Helper\Data');
+?>
+<a href="<?php echo $trackingHelper->getTrackingPopupUrlBySalesModel($block->getData('shipment')) ?>">Track this shipment</a>

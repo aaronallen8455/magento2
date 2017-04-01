@@ -11,11 +11,12 @@ define([
         initialize: function (config, element) {
             this._super();
 
+
             element.style.backgroundColor = 'blue';
             element.style.color = 'white';
         },
         method: function () {
-            window.alert('Child Method!');
+            window.alert(this.someValue);
         }
     });
 });
