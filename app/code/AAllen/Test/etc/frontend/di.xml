@@ -29,4 +29,7 @@
     <type name="Magento\Framework\View\Result\Page">
         <plugin name="productCustomLayout" type="AAllen\Test\Plugin\ProductLayout" disabled="false"/>
     </type>
+    <type name="AAllen\Sandbox\Controller\Box\Index">
+        <plugin name="changeTemp" type="AAllen\Test\Plugin\Temp" disabled="true"/>
+    </type>
 </config>

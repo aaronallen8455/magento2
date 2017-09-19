@@ -14,6 +14,10 @@
         <plugin name="templateVarsPlug" type="AAllen\Sandbox\Plugin\ShipEmailPlug" disabled="false"/>
     </type>
 
+    <type name="Magento\Framework\App\Action\AbstractAction">
+        <plugin name="redirectPlug" type="AAllen\Sandbox\Plugin\RedirectBack"/>
+    </type>
+
     <preference for="Magento\OfflineShipping\Model\Carrier\Flatrate" type="AAllen\Sandbox\Model\Carrier\Flatrate"/>
 
     <!--<preference for="Magento\Customer\Model\Account\Redirect" type="AAllen\Sandbox\Model\Account\Redirect" />-->

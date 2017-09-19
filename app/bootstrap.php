@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2016 Magento. All rights reserved.
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -8,7 +8,7 @@
  * Environment initialization
  */
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+#ini_set('display_errors', 1);
 
 /* PHP version validation */
 if (!defined('PHP_VERSION_ID') || !(PHP_VERSION_ID >= 50005 && PHP_VERSION_ID < 50700 || PHP_VERSION_ID === 70002 || PHP_VERSION_ID === 70004 || PHP_VERSION_ID >= 70006)) {

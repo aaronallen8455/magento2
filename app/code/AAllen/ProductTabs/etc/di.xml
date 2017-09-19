@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Catalog\Helper\Product\View">
+		<plugin disabled="false" name="AAllen_ProductTabs_Plugin_Magento_Catalog_Helper_Product_View" sortOrder="10" type="AAllen\ProductTabs\Plugin\Magento\Catalog\Helper\Product\View"/>
+	</type>
+	<preference for="AAllen\ProductTabs\Api\TabRepositoryInterface" type="AAllen\ProductTabs\Model\TabRepository"/>
+	<virtualType name="AAllen\ProductTabs\Model\ResourceModel\Tab\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">aallen_producttabs_tab</argument>
+			<argument name="resourceModel" xsi:type="string">AAllen\ProductTabs\Model\ResourceModel\Tab\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="aallen_producttabs_tab_grid_data_source" xsi:type="string">AAllen\ProductTabs\Model\ResourceModel\Tab\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

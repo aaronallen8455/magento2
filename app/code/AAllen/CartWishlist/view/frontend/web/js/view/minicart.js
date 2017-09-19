@@ -77,6 +77,7 @@ define([
 
     return Component.extend({
         shoppingCartUrl: window.checkout.shoppingCartUrl,
+        maxItemsToDisplay: window.checkout.maxItemsToDisplay,
         cart: {},
 
         /**
@@ -153,6 +154,29 @@ define([
             }
 
             return this.cart[name]();
+        },
+
+        /**
+         * Returns array of cart items, limited by 'maxItemsToDisplay' setting.
+         *
+         * @returns []
+         */
+        getCartItems: function () {
+            var items = this.getCartParam('items') || [];
+            items = items.slice(parseInt(-this.maxItemsToDisplay, 10));
+
+            return items;
+        },
+
+        /**
+         * Returns count of cart line items.
+         *
+         * @returns {Number}
+         */
+        getCartLineItemsCount: function () {
+            var items = this.getCartParam('items') || [];
+
+            return parseInt(items.length, 10);
         }
     });
 });

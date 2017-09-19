@@ -8,6 +8,7 @@ define([
     'use strict';
 
     ko.bindingHandlers.customBinding = {
+        // This will be called when the binding is first applied to an element
         init: function (element, valueAccesor) {
             console.log('I am a custom binding.');
         }

@@ -1,0 +1,29 @@
+When the next step button is clicked from the address form, a post request is sent to '{cart_id}/shipping-information'
+This is initiated by 'shipping-save-processor/default.js'
+
+There is also 'new-address.js' which appears to be used to get the shipping rates when the zip code is changed.
+it is unclear how this script gets called. Also unclear why only the county, region, and postcode fields are
+in the post request.
+'new-address'.getRates gets called from 'shipping-rate-service.js'
+
+$$$$$$$
+The 'shipping.html' KO template which houses the shipping step html, the form element has 'data-bind="submit: setShippingInformation"'
+When 'validateShippingInformation' gets called, the form data is copied to the `quote.shippingAddress` observable.
+
+The setShippingInformation method in 'shipping.js' first validates the shipping info and calls 'setShippingInformationAction()' which has a promise that calls 'stepNavigator.next()'
+Part of this process is that the address is sent to server side via api '/shipping-information'.
+
+$$$$$$$$$$
+In our custom field, set the `dataScope` to 'shippingAddress.custom_attributes.field_name' then it will show up in the JSON array that gets sent to `/shipping-information`
+This correlates to class="Magento\Checkout\Api\GuestShippingInformationManagementInterface" method="saveAddressInformation"
+
+$$$$$$$
+When the place order button is clicked, the 'payment/default.js::placeOrder' method is called. Which then calls: Magento_Checkout/js/action/place-order
+This sends a post request to '/payment-information' (class="Magento\Checkout\Api\GuestPaymentInformationManagementInterface" method="savePaymentInformationAndPlaceOrder")
+eventually routes to \Magento\Quote\Model\QuoteManagement::placeOrder
+
+$$$$$$
+theory: if custom_attributes set in the checkout form actually carry through to the $quote->getShippingAddress() object, then we could use the 'sales_model_service_quote_submit_before' event to add the field to the order object.
+
+custom attributes apparently does not carry over...
+

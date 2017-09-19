@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Catalog\Helper\Product\View">
+		<plugin disabled="false" name="AAllen_ProdAttrSetCustomLayout_Plugin_Magento_Catalog_Helper_Product_View" sortOrder="10" type="AAllen\ProdAttrSetCustomLayout\Plugin\Magento\Catalog\Helper\Product\View"/>
+	</type>
+</config>

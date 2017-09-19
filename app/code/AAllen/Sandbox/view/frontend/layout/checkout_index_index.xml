@@ -51,8 +51,8 @@
                                                                         <item name="label" xsi:type="string">Label</item>
                                                                     </item>
                                                                 </item>-->
-                                                                <item name="custom" xsi:type="array">
-                                                                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                                <!--<item name="custom" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">AAllen_Sandbox/js/custom-input</item>
                                                                     <item name="config" xsi:type="array">
                                                                         <item name="customScope" xsi:type="string">shippingAddress</item>
                                                                         <item name="visible" xsi:type="boolean">true</item>
@@ -66,10 +66,10 @@
                                                                         </item>
                                                                     </item>
                                                                     <item name="provider" xsi:type="string">checkoutProvider</item>
-                                                                    <item name="dataScope" xsi:type="string">shippingAddress.custom</item>
+                                                                    <item name="dataScope" xsi:type="string">shippingAddress.custom_attributes.custom</item>
                                                                     <item name="label" xsi:type="string">Custom Input</item>
                                                                     <item name="sortOrder" xsi:type="string">1</item>
-                                                                </item>
+                                                                </item>-->
                                                             </item>
                                                         </item>
                                                     </item>

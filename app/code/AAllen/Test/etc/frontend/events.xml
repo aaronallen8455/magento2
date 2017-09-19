@@ -5,4 +5,7 @@
     <event name="controller_action_predispatch">
         <observer name="training_test2" instance="AAllen\Test\Observer\Test" shared="true" disabled="false" />
     </event>
+    <event name="sales_quote_item_set_product">
+        <observer name="custom_price" instance="AAllen\Test\Observer\Price" shared="true" disabled="false"/>
+    </event>
 </config>

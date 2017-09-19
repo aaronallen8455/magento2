@@ -44,6 +44,6 @@ class Test implements ObserverInterface
         //    $this->_actionFlag->set('', Action::FLAG_NO_DISPATCH, true);
         //    $this->redirect->redirect($controller->getResponse(), 'catalog/product/view/id/1');
         //}
-        $this->_logger->debug('two');
+        //$this->_logger->debug('two');
     }
 }

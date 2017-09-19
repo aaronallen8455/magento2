@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="AAllen::top_level" module="AAllen_ProductTabs" resource="Magento_Backend::content" sortOrder="9999" title="AAllen"/>
+		<add action="aallen_producttabs/tab/index" id="AAllen::aallen_producttabs_tab" module="AAllen_ProductTabs" parent="AAllen::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Tab"/>
+	</menu>
+</config>

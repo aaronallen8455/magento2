@@ -1,0 +1,30 @@
+<div>
+    <ol>
+        <?php foreach ($block->getBestSellers() as $item): ?>
+            <li><?php echo $item->getProductName(); ?></li>
+        <?php endforeach; ?>
+    </ol>
+</div>
+
+<div>
+    <ol>
+        <?php foreach ($block->getMostViewed() as $item): ?>
+            <li><?php echo $item->getName(); ?></li>
+        <?php endforeach; ?>
+    </ol>
+</div>
+
+<div>
+    <ul>
+        <?php foreach ($block->getWishlist() as $list): ?>
+            <li>
+                <?php echo $list->getCustomerId(); ?>
+                <ul>
+                    <?php foreach ($list->getItemCollection() as $item): ?>
+                        <li><?php echo $item->getName(); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>

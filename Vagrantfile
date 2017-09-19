@@ -10,6 +10,7 @@ Vagrant.configure(2) do |config|
   # Create a private network allowing host-only access.
   config.vm.network "private_network", ip: "192.168.33.33"
 
+
   # Extra sync folder.
   config.vm.synced_folder "scripts", "/scripts"
 

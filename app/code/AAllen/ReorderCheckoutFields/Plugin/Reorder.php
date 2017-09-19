@@ -29,6 +29,11 @@ class Reorder
         ['children']['shippingAddress']['children']['shipping-address-fieldset']
         ['children']['street']['sortOrder'] = 200;
 
+        //$jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']
+        //['children']['shippingAddress']['children']['shipping-address-fieldset']
+        //['children']['street']['config']['validateWholeGroup'] = true;
+
+
         //if (isset($jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']
         //    ['children']['shippingAddress']['children']['shipping-address-fieldset']['children']
         //)) {

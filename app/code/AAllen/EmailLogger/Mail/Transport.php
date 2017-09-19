@@ -34,7 +34,9 @@ class Transport extends \Magento\Framework\Mail\Transport
         // create html file from the email template
         $dir = $this->filesystem->getDirectoryWrite(DirectoryList::VAR_DIR);
         $fileName = 'email.html';
-        $dir->writeFile($fileName, $this->_message->getBodyHtml()->getRawContent());
+        if ($this->_message->getBodyHtml()) {
+            $dir->writeFile($fileName, $this->_message->getBodyHtml()->getRawContent());
+        }
 
         parent::sendMessage();
     }

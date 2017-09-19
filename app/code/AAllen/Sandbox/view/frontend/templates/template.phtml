@@ -8,10 +8,17 @@
 }
 '></div>
 
-<di>
+<div>
+    BEST SELL
+    <?php foreach ($block->getBestSellers() as $item): ?>
+        <div><?php echo $item->getProductName(); ?></div>
+    <?php endforeach; ?>
+</div>
+
+<div>
     <?php echo $block->getCartItemCount() ?> TEST
     <span data-bind="text: JSON.parse(window.localStorage.getItem('mage-cache-storage')).cart.summary_count"></span>
-</di>
+</div>
 
 
 <div>

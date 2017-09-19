@@ -43,6 +43,8 @@ class Index extends Action
 
     public function execute()
     {
+
+        //$this->getResponse()->setRedirect($url);
         // feed product to media gallery
         $product = $this->productRepo->getById(2);
         $this->coreRegistry->register('product', $product);
@@ -58,7 +60,6 @@ class Index extends Action
 
 
         //youtube api key  AIzaSyDNPeLdIzruUJjoUKnjYI0VcICznNJVBwg
-
 
 
         $resultPage = $this->resultPageFactory->create();
@@ -78,6 +79,8 @@ class Index extends Action
         //    $block->getNameInLayout(),
         //    'test_block'
         //);
+        $block = $resultPage->getLayout()->getChildName('content', 'thabox');
+        \Zend_Debug::dump($block);
 
         $block = $resultPage->getLayout()->createBlock(
             'AAllen\CatMenu\Block\CatMenu',
@@ -101,6 +104,7 @@ class Index extends Action
         //$this->cart->addProduct($product);
         //$this->cart->truncate();
         //$this->cart->save();
+        //$this->messageManager->addWarningMessage(get_class($this));
 
         return $resultPage;
     }

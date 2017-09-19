@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Quote\Model\Quote\Address">
+		<plugin disabled="false" name="AAllen_OptionalNameCheckout_Plugin_Magento_Quote_Model_Quote_Address" sortOrder="10" type="AAllen\OptionalNameCheckout\Plugin\Magento\Quote\Model\Quote\Address"/>
+	</type>
+	<type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+		<plugin disabled="false" name="AAllen_OptionalNameCheckout_Plugin_Magento_Checkout_Block_Checkout_LayoutProcessor" sortOrder="10" type="AAllen\OptionalNameCheckout\Plugin\Magento\Checkout\Block\Checkout\LayoutProcessor"/>
+	</type>
+</config>

@@ -9,6 +9,7 @@
 namespace AAllen\Sandbox\Block;
 
 
+use Magento\Backend\Block\Dashboard\Tab\Products\Ordered;
 use Magento\Catalog\Block\Product\ImageBuilder;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
@@ -43,6 +44,7 @@ class Block extends Template
     protected $orderRepository;
     protected $componentRegistrar;
     protected $shipmentInfo;
+    protected $bestSellersCollection;
 
     public function __construct(
         Context $context,
@@ -59,6 +61,7 @@ class Block extends Template
         OrderRepository $orderRepository,
         ComponentRegistrarInterface $componentRegistrar,
         ShipmentInfo $shipmentInfo,
+        \Magento\Sales\Model\ResourceModel\Report\Bestsellers\CollectionFactory $collectionFactory,
         array $data)
     {
         $this->checkoutSession = $session;
@@ -75,7 +78,17 @@ class Block extends Template
         $this->orderRepository = $orderRepository;
         $this->componentRegistrar = $componentRegistrar;
         $this->shipmentInfo = $shipmentInfo;
+        $this->bestSellersCollection = $collectionFactory->create();
         parent::__construct($context, $data);
+    }
+
+    public function getBestSellers()
+    {
+        $this->bestSellersCollection->setModel(
+            'Magento\Catalog\Model\Product'
+        )->addStoreFilter($this->_storeManager->getStore()->getId());
+
+        return $this->bestSellersCollection;
     }
 
     public function getCartItemCount()

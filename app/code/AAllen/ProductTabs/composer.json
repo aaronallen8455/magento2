@@ -1,0 +1,21 @@
+{
+    "name": "aallen/module-producttabs",
+    "description": "Creates a backend for adding tabs to the product view page",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mage2Gen",
+            "email": "info@mage2gen.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "AAllen\\ProductTabs\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}
