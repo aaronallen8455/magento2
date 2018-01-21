@@ -11,5 +11,79 @@
                 </item>
             </argument>
         </column>
+
+
+        <!-- sales_order_item weight -->
+        <column name="weight">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Weight</item>
+                    <item name="sortOrder" xsi:type="number">222</item>
+                    <item name="align" xsi:type="string">right</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <!--<item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>-->
+                </item>
+            </argument>
+        </column>
+
+
+
+        <!-- sales_order_address country_id -->
+        <column name="country_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Country ID</item>
+                    <item name="sortOrder" xsi:type="number">242</item>
+                    <item name="align" xsi:type="string">right</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <!--<item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>-->
+                </item>
+            </argument>
+        </column>
+
+        <!-- sales_order_address post_code -->
+        <column name="postcode">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Postcode</item>
+                    <item name="sortOrder" xsi:type="number">252</item>
+                    <item name="align" xsi:type="string">right</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <!--<item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>-->
+                </item>
+            </argument>
+        </column>
+
+        <!-- sales_order_address city -->
+        <column name="city">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">City</item>
+                    <item name="sortOrder" xsi:type="number">252</item>
+                    <item name="align" xsi:type="string">right</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <!--<item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>-->
+                </item>
+            </argument>
+        </column>
+
+        <!-- sales_order_address telephone -->
+        <column name="telephone">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Telephone</item>
+                    <item name="sortOrder" xsi:type="number">252</item>
+                    <item name="align" xsi:type="string">right</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <!--<item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>-->
+                </item>
+            </argument>
+        </column>
+
     </columns>
 </listing>

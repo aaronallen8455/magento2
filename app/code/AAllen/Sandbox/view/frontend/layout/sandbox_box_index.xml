@@ -14,6 +14,22 @@
             <block name="cmsmenu" class="AAllen\CmsTopmenu\Block\Menu"/>
             <block name="menu" class="Magento\Theme\Block\Html\Topmenu"/>-->
             <block name="tempTest" class="Magento\Framework\View\Element\Template" template="AAllen_Sandbox::magentoxtemplate.phtml"/>
+
+
+            <block name="jsSingletonTest" class="Magento\Framework\View\Element\Template" template="AAllen_Sandbox::jssingleton.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="componentA" xsi:type="array">
+                                <item name="component" xsi:type="string">AAllen_Sandbox/js/component-a</item>
+                            </item>
+                            <item name="componentB" xsi:type="array">
+                                <item name="component" xsi:type="string">AAllen_Sandbox/js/component-b</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
         </referenceContainer>
         <referenceContainer name="sidebar.main">
             <block name="men" class="AAllen\SidebarMenu\Block\Menu"/>

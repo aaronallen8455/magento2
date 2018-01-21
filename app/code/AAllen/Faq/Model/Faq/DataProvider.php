@@ -25,6 +25,8 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
      */
     protected $loadedData;
 
+    protected $request;
+
     /**
      * Constructor
      *
@@ -42,12 +44,26 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         $requestFieldName,
         CollectionFactory $faqCollectionFactory,
         DataPersistorInterface $dataPersistor,
+        \Magento\Framework\App\RequestInterface $request,
         array $meta = [],
         array $data = []
     ) {
         $this->collection = $faqCollectionFactory->create();
         $this->dataPersistor = $dataPersistor;
+        $this->request = $request;
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
+    }
+
+    public function getMeta()
+    {
+        $meta = parent::getMeta();
+
+        if (!is_null($this->request->getParam($this->getRequestFieldName(), null)))
+        {
+            $meta['general']['children']['question']['arguments']['data']['config']['label'] = "Edit Question";
+        }
+
+        return $meta;
     }
 
     /**

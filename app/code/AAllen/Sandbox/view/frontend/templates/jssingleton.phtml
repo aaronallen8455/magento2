@@ -1,0 +1,11 @@
+<?php /** @var $block \Magento\Framework\View\Element\Template */ ?>
+
+<div id="singleton"></div>
+
+<script type="text/x-magento-init">
+    {
+        "#singleton": {
+            "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout();?>
+        }
+    }
+</script>

@@ -22,4 +22,8 @@
 
     <!--<preference for="Magento\Customer\Model\Account\Redirect" type="AAllen\Sandbox\Model\Account\Redirect" />-->
 
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <plugin name="add_columns" type="AAllen\Sandbox\Plugin\AddColumns" disabled="false"/>
+    </type>
+
 </config>
